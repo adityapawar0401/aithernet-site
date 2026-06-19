@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Public API overview — Aithernet</title>
+<meta name="description" content="Overview of Aithernet's authenticated interfaces: the node-local API (missions, events, MCP tools) and the external-agent interoperability gateway with scoped credentials. There are no anonymous public endpoints.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav>
+    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
+    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
+    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <a class="btn" href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a>
+</div></header>
+
+<main>
+  <h1>Public API overview</h1>
+  <p class="lede">Aithernet's programmatic surfaces are <strong>authenticated</strong> and either
+    node-local or scoped to a provisioned external agent. There are no anonymous public API
+    endpoints, and this site exposes no tokens, keys or live endpoints.</p>
+
+  <div class="note">This page describes the <em>shape</em> of the interfaces. Exact request/response
+    schemas, scopes and the credential lifecycle for your deployment are documented in the
+    authenticated portal once your node is enrolled and an external agent is provisioned.</div>
+
+  <h2>1 · Node-local API</h2>
+  <p>Each node runs a local HTTP API used by the local dashboard and the <code>aithernet</code> CLI.
+    It is bound for local/administrative use and is <strong>never exposed to the Internet</strong>;
+    the node makes only outbound connections to the hosted control plane. Conceptual surfaces:</p>
+  <table>
+    <tr><th>Area</th><th>Purpose</th><th>CLI</th></tr>
+    <tr><td>Missions</td><td>Submit, inspect and process bounded missions.</td>
+        <td><code>aithernet mission …</code></td></tr>
+    <tr><td>Events</td><td>List and stream runtime events (steps, tool calls, agent activity).</td>
+        <td><code>aithernet events …</code></td></tr>
+    <tr><td>MCP tools</td><td>Inspect and call GNU Radio MCP tools through the signed component.</td>
+        <td><code>aithernet mcp …</code></td></tr>
+    <tr><td>Diagnostics</td><td>Sanitized operational diagnostics (no secrets).</td>
+        <td><code>aithernet diagnostics …</code></td></tr>
+  </table>
+
+  <h2>2 · External-agent gateway</h2>
+  <p>Aithernet supports secure interoperability with external agents through a gateway with
+    <strong>scoped credentials</strong>, bounded execution, callback endpoints and durable
+    deliveries. Agents are explicitly provisioned by an operator; anonymous access is never granted.</p>
+  <table>
+    <tr><th>Concept</th><th>Description</th></tr>
+    <tr><td>Provisioning</td><td>An operator provisions an external agent; credentials are issued
+        server-side and never printed in full.</td></tr>
+    <tr><td>Scopes / permissions</td><td>Each agent is granted explicit, bounded permissions.</td></tr>
+    <tr><td>Endpoints &amp; subscriptions</td><td>Callback endpoints and event subscriptions are
+        registered per agent.</td></tr>
+    <tr><td>Deliveries</td><td>Event deliveries are durable and inspectable.</td></tr>
+  </table>
+  <p>Operator commands (run on an enrolled node):</p>
+  <pre><code># list and inspect external agents (no secrets are printed)
+aithernet external-agents list
+aithernet external-agents show &lt;agent&gt;
+
+# provision, then manage scopes/credentials (operator-gated)
+aithernet external-agents create &lt;name&gt;
+aithernet external-agents permissions …
+aithernet external-agents credentials …
+aithernet external-agents diagnostics</code></pre>
+
+  <h2>3 · Hosted control plane</h2>
+  <p>The hosted platform authenticates browsers (HttpOnly session cookie + CSRF double-submit) and
+    nodes (signed enrollment and heartbeat). Public, unauthenticated surfaces are limited to a
+    health/readiness probe and signed release downloads granted to approved customers. Customer and
+    administrator functionality is authorized server-side, not by hiding routes.</p>
+
+  <h2>Status &amp; stability</h2>
+  <p class="muted">The programmatic interfaces are evolving during early access. A self-service
+    token-issuance portal and versioned, published API reference are still being finalized; until
+    then, external-agent credentials are provisioned with operator assistance. Treat the surfaces
+    above as conceptual and subject to change.</p>
+</main>
+
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    <a href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a> ·
+    <a href="https://app.aithernet.online/health/ready">Service status</a> ·
+    contact <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a></p>
+</div></footer>
+</body>
+</html>

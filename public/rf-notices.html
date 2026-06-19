@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RF component &amp; source notices — Aithernet</title>
+<meta name="description" content="Aithernet RF MCP component provenance and GPL corresponding-source notice.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav>
+    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
+    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
+    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <a class="btn" href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a>
+</div></header>
+
+<main>
+  <h1>RF component &amp; source notices</h1>
+  <p class="lede">Aithernet's RF backend is a pinned, reproducible build of an open-source GNU Radio
+    MCP server, redistributed under the GPL with its complete corresponding source.</p>
+
+  <h2>The rf-mcp component</h2>
+  <table>
+    <tr><th>Field</th><th>Value</th></tr>
+    <tr><td>Component</td><td><code>rf-mcp</code> (GNU Radio MCP server, FastMCP over stdio)</td></tr>
+    <tr><td>Upstream project</td>
+        <td><a href="https://github.com/yoelbassin/gr-mcp">github.com/yoelbassin/gr-mcp</a></td></tr>
+    <tr><td>Pinned upstream commit</td><td><code>8ca731e3f9a083b32170c9a0e6ee3d1e61b4f3de</code></td></tr>
+    <tr><td>Aithernet modification</td>
+        <td>One patch relaxing the required Python from <code>&gt;=3.13</code> to <code>&gt;=3.12</code>
+            for the Ubuntu 24.04 GNU Radio 3.10 / Python 3.12 / NumPy 1.x bindings. No other source
+            is changed.</td></tr>
+    <tr><td>License</td><td><strong>GPL-3.0-only</strong></td></tr>
+    <tr><td>Required Python / GNU Radio</td><td>Python &ge; 3.12 · GNU Radio &ge; 3.10</td></tr>
+  </table>
+
+  <h2>Corresponding source (GPL §3)</h2>
+  <p>Because the component is distributed in installable form, the <strong>complete corresponding
+    source</strong> is shipped alongside every release as
+    <code>rf-mcp-&lt;version&gt;-src.tar.gz</code> — upstream at the pinned commit with the Aithernet
+    patch applied — together with the upstream GPL <code>LICENSE</code> and a source notice. A
+    <code>lock.json</code> records the upstream URL and commit, the patch SHA-256 and the
+    source-archive SHA-256 so any recipient can reproduce the exact source independently.</p>
+
+  <div class="note">This satisfies the GPL obligation to convey the license and to provide the
+    corresponding source for the conveyed work. The component is installed into a managed location
+    and launched directly — never from a developer checkout.</div>
+
+  <h2>RF toolchain</h2>
+  <p>GNU Radio (GPL-3.0), SoapySDR (Boost), UHD (GPL-3.0) and libiio (LGPL-2.1) are installed from
+    the signed Ubuntu 24.04 distribution archive and are <strong>not redistributed</strong> by
+    Aithernet. Each remains under its own license from its distributor.</p>
+
+  <h2>Aithernet core</h2>
+  <p>The Aithernet node/control-plane code is provided under its own terms to approved customers;
+    its third-party Python dependencies are obtained from PyPI under their respective OSI licenses
+    and enumerated in the software bill of materials shipped with each release.</p>
+</main>
+
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    <a href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a> ·
+    <a href="https://app.aithernet.online/health/ready">Service status</a></p>
+</div></footer>
+</body>
+</html>

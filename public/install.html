@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Installation — Aithernet</title>
+<meta name="description" content="How to install an Aithernet node on Ubuntu 24.04 LTS amd64 after early-access approval.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav>
+    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
+    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
+    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <a class="btn" href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a>
+</div></header>
+
+<main>
+  <h1>Installation</h1>
+  <p class="lede">Aithernet is invitation-only. Packages are delivered through the authenticated
+    portal after your access request is approved — this public site hosts no binaries, keys or
+    credentials.</p>
+
+  <h2>The customer sequence</h2>
+  <ol>
+    <li><strong>Request access</strong> by emailing
+      <a href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">adityapawar@aithernet.online</a>.
+      Self-service signup is not available during early access.</li>
+    <li><strong>Get approved</strong> — an administrator reviews the request and sends a one-time
+      invitation email.</li>
+    <li><strong>Create your account</strong> from the invitation link and sign in to the portal.</li>
+    <li><strong>Download</strong> the signed release (Debian package, plus wheel/sdist) from the
+      portal's Downloads page.</li>
+    <li><strong>Verify</strong> the release: check the detached signature over the manifest with the
+      published verification key, then verify each artifact checksum.</li>
+    <li><strong>Install</strong> the package and run setup.</li>
+  </ol>
+
+  <h2>Verify &amp; install (Ubuntu 24.04 amd64)</h2>
+  <p>After downloading the release directory (manifest, signature, checksums, package and the
+    public key) from the portal:</p>
+  <pre><code># 1) verify the signed manifest, then the artifact checksums
+openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
+  -rawin -in manifest.json -sigfile manifest.sig
+sha256sum -c SHA256SUMS
+
+# 2) install the node package
+sudo apt install ./aithernet_&lt;version&gt;_amd64.deb
+
+# 3) the documented CLI is now on PATH
+aithernet --help</code></pre>
+
+  <h2>Set up, enroll and start</h2>
+  <pre><code># prepare state + node identity
+aithernet setup --node-name "my-sdr-node"
+
+# install a hardware profile of SIGNED distribution packages (no source build)
+sudo aithernet hardware install --profile pluto
+aithernet hardware doctor          # read-only readiness + remediation
+
+# enroll to the hosted control plane with a one-time code from the portal
+aithernet enroll --base-url https://app.aithernet.online/api --code &lt;ENROLLMENT_CODE&gt;
+
+# enable and start the service, then check status
+sudo systemctl enable --now aithernet-node
+aithernet hosted status
+aithernet hosted heartbeat</code></pre>
+
+  <div class="note">The RF backend is a pinned, signed GNU Radio MCP component installed into a
+    managed location — never a developer checkout. See
+    <a href="/rf-notices.html">RF component &amp; source notices</a>.</div>
+
+  <h2>Receive-first &amp; permissions</h2>
+  <ul class="tight">
+    <li>The node is <strong>receive-first</strong>; transmission is disabled by default.</li>
+    <li>Non-root SDR access uses udev + the <code>plugdev</code>/<code>dialout</code> groups; the
+      installer configures these.</li>
+    <li>The node makes only <strong>outbound</strong> connections to the control plane. It opens no
+      inbound ports and never exposes its local API to the Internet.</li>
+  </ul>
+
+  <p class="muted">Exact versioned commands and the verification key are provided with your release
+    in the portal. Commands on this page show <code>&lt;version&gt;</code> as a stand-in you replace
+    with your actual release version.</p>
+</main>
+
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    <a href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a> ·
+    <a href="https://app.aithernet.online/health/ready">Service status</a></p>
+</div></footer>
+</body>
+</html>

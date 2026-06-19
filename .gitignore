@@ -1,0 +1,22 @@
+# Aithernet public static site — keep this repository clean and public-safe.
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/
+
+# Local tooling (none required to serve the static site)
+node_modules/
+.cache/
+*.log
+
+# Never commit anything secret or environment-specific here.
+# This repository must contain ONLY public static assets.
+.env
+.env.*
+*.pem
+*.key
+*.secret

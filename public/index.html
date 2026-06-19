@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aithernet — autonomous SDR node runtime</title>
+<meta name="description" content="Aithernet is an autonomous software-defined-radio node runtime with a hosted control plane, a GNU Radio MCP backend, and a privacy-first telemetry model. Early access is invitation-only.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav>
+    <a href="/docs.html">Docs</a>
+    <a href="/supported-systems.html">Systems</a>
+    <a href="/hardware.html">Hardware</a>
+    <a href="/install.html">Install</a>
+    <a href="/api.html">API</a>
+    <a href="/release-notes.html">Releases</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <a class="btn ghost" href="https://app.aithernet.online/health/ready">Status</a>
+  <a class="btn" href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a>
+</div></header>
+
+<main>
+  <section class="hero">
+    <span class="pill warn">Early access · invitation-only</span>
+    <h1>An autonomous SDR node runtime, operated as a product.</h1>
+    <p class="lede">Aithernet runs a software-defined-radio node with a GNU Radio MCP backend,
+      a coordinator/coding-agent layer with deterministic budgets and approvals, and a hosted
+      control plane for enrollment, fleet health and signed releases — with privacy-first,
+      consent-gated telemetry.</p>
+    <p>
+      <a class="btn" href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request early access</a>
+      &nbsp;<a class="btn ghost" href="/install.html">Read the install guide</a>
+    </p>
+    <p class="muted">Public access is gated by an approved, one-time invitation. The marketing
+      site hosts no downloads, credentials or customer data — signed packages are delivered through
+      the authenticated portal after access is granted.</p>
+  </section>
+
+  <h2>What it is</h2>
+  <div class="grid">
+    <div class="card"><h3>SDR node runtime</h3>
+      <p>A local node that drives an SDR through a pinned, signed GNU Radio MCP component over
+        stdio. Receive-first; transmission is disabled by default.</p></div>
+    <div class="card"><h3>Hosted control plane</h3>
+      <p>Outbound-only nodes enroll to a hosted control plane for identity, fleet health,
+        heartbeats and signed release distribution. The node's local API is never exposed to
+        the Internet.</p></div>
+    <div class="card"><h3>Agent layer</h3>
+      <p>Optional coordinator (Gemini API / OpenAI-compatible / local endpoint) and coding agent,
+        each in an isolated workspace with deterministic budgets and explicit approvals. Never
+        exposed to anonymous users.</p></div>
+    <div class="card"><h3>Privacy-first telemetry</h3>
+      <p>Telemetry is consent-gated and data-minimized. See the
+        <a href="/privacy.html">privacy &amp; legal</a> page.</p></div>
+  </div>
+
+  <h2>Start here</h2>
+  <ul class="tight">
+    <li><a href="/supported-systems.html">Supported systems</a> — Ubuntu 24.04 LTS amd64 baseline.</li>
+    <li><a href="/hardware.html">Qualified hardware</a> — what has actually been tested.</li>
+    <li><a href="/install.html">Installation</a> — request access, then install the signed package.</li>
+    <li><a href="/api.html">Public API</a> — scoped external-agent tokens, missions, events, MCP.</li>
+    <li><a href="/rf-notices.html">RF component &amp; source notices</a> — GPL corresponding source.</li>
+    <li><a href="/release-notes.html">Release notes</a> · <a href="/privacy.html">Privacy &amp; legal</a></li>
+  </ul>
+
+  <div class="note">Aithernet is in an invitation-only early-access beta. It is not yet a general
+    availability product. Nothing on this site grants self-service registration.</div>
+</main>
+
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    <a href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a> ·
+    <a href="https://app.aithernet.online/health/ready">Service status</a> ·
+    contact <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a></p>
+  <p class="muted">This is the public static site (www.aithernet.online). The customer portal and
+    control plane run separately at app.aithernet.online; administration at admin.aithernet.online.</p>
+</div></footer>
+</body>
+</html>

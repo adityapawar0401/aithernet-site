@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Supported systems — Aithernet</title>
+<meta name="description" content="Aithernet supported operating systems and runtime requirements. Baseline: Ubuntu 24.04 LTS amd64.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav>
+    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
+    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
+    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <a class="btn" href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a>
+</div></header>
+
+<main>
+  <h1>Supported systems</h1>
+  <p class="lede">The supported baseline is a 64-bit Ubuntu LTS host. Other distributions may work
+    but are not part of the qualified baseline.</p>
+
+  <h2>Operating system</h2>
+  <table>
+    <tr><th>Platform</th><th>Status</th><th>Notes</th></tr>
+    <tr><td>Ubuntu 24.04 LTS · amd64</td><td><span class="pill ok">Supported baseline</span></td>
+        <td>Reference platform. Signed <code>.deb</code> packaging targets this release.</td></tr>
+    <tr><td>Ubuntu 22.04 LTS · amd64</td><td><span class="pill warn">Best-effort</span></td>
+        <td>May work with a compatible GNU Radio; not the qualified baseline.</td></tr>
+    <tr><td>Other Linux · amd64</td><td><span class="pill warn">Unsupported / source</span></td>
+        <td>Install from the wheel/sdist where Python and GNU Radio are available.</td></tr>
+    <tr><td>arm64 / Raspberry Pi</td><td><span class="pill off">Not yet qualified</span></td>
+        <td>No physical qualification claimed.</td></tr>
+    <tr><td>Windows / macOS</td><td><span class="pill off">Not supported</span></td>
+        <td>The node requires Linux device access (udev) and a system GNU Radio.</td></tr>
+  </table>
+
+  <h2>Runtime requirements</h2>
+  <table>
+    <tr><th>Component</th><th>Requirement</th></tr>
+    <tr><td>Python</td><td>3.12 or newer (3.12 ships with Ubuntu 24.04).</td></tr>
+    <tr><td>GNU Radio</td><td>3.10 or newer, installed from distribution packages.</td></tr>
+    <tr><td>SoapySDR</td><td>Runtime + tools + the relevant device module (per hardware profile).</td></tr>
+    <tr><td>USB / permissions</td><td>Membership in <code>plugdev</code> (and <code>dialout</code> where applicable) for non-root SDR access via udev.</td></tr>
+    <tr><td>Network</td><td>Outbound HTTPS to the hosted control plane. No inbound ports are opened on the node.</td></tr>
+  </table>
+
+  <div class="note">GNU Radio, SoapySDR and UHD are installed from signed Ubuntu distribution
+    packages. Aithernet does not compile them from source by default; an explicit, pinned,
+    hash-verified source-build mode exists for advanced operators and installs only into an
+    Aithernet-owned prefix (never <code>/usr/local</code>).</div>
+
+  <p><a href="/hardware.html">→ Qualified hardware</a> &nbsp;·&nbsp;
+     <a href="/install.html">→ Installation</a></p>
+</main>
+
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    <a href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a> ·
+    <a href="https://app.aithernet.online/health/ready">Service status</a></p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qualified hardware — Aithernet</title>
+<meta name="description" content="Aithernet hardware support matrix. Honest status: what has been physically tested versus software-supported.">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav>
+    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
+    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
+    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <a class="btn" href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a>
+</div></header>
+
+<main>
+  <h1>Qualified hardware</h1>
+  <p class="lede">We separate <strong>physically qualified</strong> hardware (tested on real
+    devices) from <strong>software-supported</strong> hardware (driver present, no physical test
+    yet). We do not claim qualification we have not performed.</p>
+
+  <h2>Support matrix</h2>
+  <table>
+    <tr><th>Device</th><th>Interface</th><th>Status</th><th>What was verified</th></tr>
+    <tr>
+      <td>ADALM-PLUTO (AD936x)</td><td>USB · libiio / SoapySDR</td>
+      <td><span class="pill ok">Receive verified</span></td>
+      <td>Discovered and a bounded <strong>receive-only</strong> IQ capture performed on
+        Ubuntu 24.04 LTS amd64 without root. Transmit not enabled.</td>
+    </tr>
+    <tr>
+      <td>Ettus USRP (UHD)</td><td>USB / network · UHD</td>
+      <td><span class="pill warn">Software-supported</span></td>
+      <td>UHD runtime, utilities and device images integrate; <strong>no physical USRP has been
+        qualified yet</strong>. Treated as software-supported until a real device is tested.</td>
+    </tr>
+    <tr>
+      <td>Generic SoapySDR devices</td><td>SoapySDR module</td>
+      <td><span class="pill warn">Best-effort</span></td>
+      <td>Devices with a SoapySDR module and GNU Radio Soapy integration may work; not individually
+        qualified.</td>
+    </tr>
+    <tr>
+      <td>Transmit (any device)</td><td>—</td>
+      <td><span class="pill off">Disabled</span></td>
+      <td>Transmission is disabled by default. Any future TX requires explicit confirmation and
+        bounded frequency / power / duration controls with an operator responsibility
+        acknowledgement, subject to local regulations.</td>
+    </tr>
+  </table>
+
+  <h2>Installation profiles</h2>
+  <p>The installer selects a maintained hardware profile of signed distribution packages:</p>
+  <table>
+    <tr><th>Profile</th><th>For</th></tr>
+    <tr><td><code>core</code></td><td>RF MCP runtime + GNU Radio, no vendor drivers.</td></tr>
+    <tr><td><code>simulation</code></td><td>No-hardware development (file/null sources).</td></tr>
+    <tr><td><code>pluto</code></td><td>ADALM-PLUTO: libiio + Soapy Pluto + GNU Radio IIO.</td></tr>
+    <tr><td><code>usrp</code></td><td>Ettus USRP: UHD runtime, utilities, device images.</td></tr>
+    <tr><td><code>soapy-generic</code></td><td>Generic SoapySDR + GNU Radio Soapy integration.</td></tr>
+    <tr><td><code>full</code></td><td>Everything above.</td></tr>
+  </table>
+
+  <div class="note">A read-only <code>aithernet hardware doctor</code> reports your GNU Radio /
+    SoapySDR / UHD / libiio versions, detected SDRs, group/permission status and RF-component
+    readiness — with actionable remediation — before you start.</div>
+
+  <p><a href="/install.html">→ Installation guide</a></p>
+</main>
+
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    <a href="mailto:adityapawar@aithernet.online?subject=Aithernet%20early-access%20request">Request access</a> ·
+    <a href="https://app.aithernet.online/health/ready">Service status</a></p>
+</div></footer>
+</body>
+</html>
