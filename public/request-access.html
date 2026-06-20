@@ -44,7 +44,7 @@
         <input id="ea-mailing" name="mailing_opt_in" type="checkbox">
         <span>Optional: also subscribe me to occasional product updates (separate, double opt-in).</span>
       </label>
-      <div class="cf-turnstile" data-sitekey="TURNSTILE_SITE_KEY"></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAADoI4UGkTQw6ILLv"></div>
       <button id="ea-submit" type="submit" class="btn">Request early access</button>
       <p id="ea-status" class="muted" role="status" aria-live="polite"></p>
     </form>
@@ -60,7 +60,7 @@
         <input id="ml-email" name="email" type="email" autocomplete="email" required
                placeholder="you@example.com">
       </div>
-      <div class="cf-turnstile" data-sitekey="TURNSTILE_SITE_KEY"></div>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAADoI4UGkTQw6ILLv"></div>
       <button id="ml-submit" type="submit" class="btn ghost">Subscribe to updates</button>
       <p id="ml-status" class="muted" role="status" aria-live="polite"></p>
     </form>
@@ -83,8 +83,8 @@
   // (the control plane allows ONLY this exact origin via CORS).
   var API = "https://app.aithernet.online/api";
   // Cloudflare Turnstile public site key. The operator replaces the placeholder before deploy.
-  var SITEKEY = "TURNSTILE_SITE_KEY";
-  if (SITEKEY === "TURNSTILE_SITE_KEY") {
+  var SITEKEY = "0x4AAAAAADoI4UGkTQw6ILLv";
+  if (SITEKEY === "0x4AAAAAADoI4UGkTQw6ILLv") {
     // Not configured yet: remove the widgets so the page is not broken (the backend treats
     // Turnstile as optional unless it is configured as required).
     document.querySelectorAll(".cf-turnstile").forEach(function (e) { e.remove(); });
