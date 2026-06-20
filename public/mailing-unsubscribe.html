@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unsubscribe — Aithernet</title>
+<meta name="description" content="Unsubscribe from the Aithernet mailing list.">
+<link rel="stylesheet" href="/assets/style.css">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav><a href="/">Home</a><a href="/privacy.html">Privacy</a></nav>
+  <a class="btn ghost" href="https://app.aithernet.online/#/signin">Sign in</a>
+</div></header>
+<main>
+  <h1>Unsubscribe</h1>
+  <p class="lede">Remove your address from the Aithernet mailing list.</p>
+  <section class="panel">
+    <button id="unsub" type="button" class="btn">Unsubscribe me</button>
+    <p id="status" class="muted" role="status" aria-live="polite"></p>
+  </section>
+</main>
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    contact <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a></p>
+</div></footer>
+<script>
+(function () {
+  var API = "https://app.aithernet.online";
+  var token = new URLSearchParams(location.search).get("token") || "";
+  var btn = document.getElementById("unsub");
+  var status = document.getElementById("status");
+  if (!token) { btn.disabled = true; status.textContent = "This unsubscribe link is invalid."; return; }
+  btn.addEventListener("click", function () {
+    btn.disabled = true; status.textContent = "Unsubscribing…";
+    fetch(API + "/v1/mailing-list/unsubscribe", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: token })
+    }).then(function () {
+      status.textContent = "You have been unsubscribed. You will receive no further mailing-list email.";
+    }).catch(function () { status.textContent = "Could not reach the service. Please try again later."; btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>

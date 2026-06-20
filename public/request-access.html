@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Request early access — Aithernet</title>
+<meta name="description" content="Request invitation-only early access to Aithernet, or subscribe to product updates. No account is created without your action.">
+<link rel="stylesheet" href="/assets/style.css">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+<header class="site"><div class="bar">
+  <a class="brand" href="/"><span>Aithernet</span></a>
+  <nav>
+    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
+    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
+    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
+    <a href="/privacy.html">Privacy</a>
+  </nav>
+  <a class="btn ghost" href="https://app.aithernet.online/#/signin">Sign in</a>
+  <a class="btn" href="/request-access.html">Request early access</a>
+</div></header>
+
+<main>
+  <h1>Request early access</h1>
+  <p class="lede">Aithernet is invitation-only during early access. Submit your email below and, if
+    your address is eligible, an early-access invitation is sent to you. No account is created until
+    you open the invitation and accept the terms.</p>
+
+  <section class="panel">
+    <h2 style="margin-top:0">Early-access request</h2>
+    <form id="ea-form" aria-label="Early-access request form" novalidate>
+      <div class="field">
+        <label for="ea-email">Email address</label>
+        <input id="ea-email" name="email" type="email" autocomplete="email" required
+               placeholder="you@example.com">
+      </div>
+      <label class="check">
+        <input id="ea-privacy" name="privacy_ack" type="checkbox" required>
+        <span>I have read the <a href="/privacy.html">privacy &amp; data handling</a> notice and
+          agree to be contacted about early access. <strong>(required)</strong></span>
+      </label>
+      <label class="check">
+        <input id="ea-mailing" name="mailing_opt_in" type="checkbox">
+        <span>Optional: also subscribe me to occasional product updates (separate, double opt-in).</span>
+      </label>
+      <div class="cf-turnstile" data-sitekey="TURNSTILE_SITE_KEY"></div>
+      <button id="ea-submit" type="submit" class="btn">Request early access</button>
+      <p id="ea-status" class="muted" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2 style="margin-top:0">Just want product updates?</h2>
+    <p class="muted">Subscribe to the mailing list without requesting access. This does not create an
+      Aithernet account and uses double opt-in — you'll get a confirmation email first.</p>
+    <form id="ml-form" aria-label="Mailing-list subscription form" novalidate>
+      <div class="field">
+        <label for="ml-email">Email address</label>
+        <input id="ml-email" name="email" type="email" autocomplete="email" required
+               placeholder="you@example.com">
+      </div>
+      <div class="cf-turnstile" data-sitekey="TURNSTILE_SITE_KEY"></div>
+      <button id="ml-submit" type="submit" class="btn ghost">Subscribe to updates</button>
+      <p id="ml-status" class="muted" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <div class="note">Already have an account? <a href="https://app.aithernet.online/#/signin">Sign in</a>.
+    After signing in you can download signed releases from your customer portal.</div>
+</main>
+
+<footer class="site"><div class="bar">
+  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
+    <a href="/request-access.html">Request access</a> ·
+    <a href="https://app.aithernet.online/health/ready">Service status</a> ·
+    contact <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a></p>
+</div></footer>
+
+<script>
+(function () {
+  // The dynamic backend lives on the app host; the static site posts the forms cross-origin to it
+  // (the control plane allows ONLY this exact origin via CORS).
+  var API = "https://app.aithernet.online";
+  // Cloudflare Turnstile public site key. The operator replaces the placeholder before deploy.
+  var SITEKEY = "TURNSTILE_SITE_KEY";
+  if (SITEKEY === "TURNSTILE_SITE_KEY") {
+    // Not configured yet: remove the widgets so the page is not broken (the backend treats
+    // Turnstile as optional unless it is configured as required).
+    document.querySelectorAll(".cf-turnstile").forEach(function (e) { e.remove(); });
+  }
+  var GENERIC = "Thanks. If your address is eligible, you'll receive an email shortly — please " +
+                "check your spam folder.";
+
+  function turnstileToken(form) {
+    var el = form.querySelector('[name="cf-turnstile-response"]');
+    return el ? el.value : "";
+  }
+
+  function wire(formId, statusId, path, buildBody) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var status = document.getElementById(statusId);
+      var email = (form.querySelector('input[type="email"]').value || "").trim();
+      if (!email) { status.textContent = "Please enter an email address."; return; }
+      var body = buildBody(form, email, status);
+      if (!body) return;                 // client-side validation failed; message already shown
+      var btn = form.querySelector("button");
+      btn.disabled = true; status.textContent = "Submitting…";
+      body.turnstile_token = turnstileToken(form);
+      fetch(API + path, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+      }).then(function () {
+        // Always show the SAME generic message (anti-enumeration), regardless of outcome.
+        status.textContent = GENERIC; form.reset();
+        if (window.turnstile) { try { turnstile.reset(); } catch (e) {} }
+      }).catch(function () {
+        status.textContent = "Could not reach the service. Please try again later.";
+      }).finally(function () { btn.disabled = false; });
+    });
+  }
+
+  wire("ea-form", "ea-status", "/v1/early-access/request", function (form, email, status) {
+    if (!form.querySelector("#ea-privacy").checked) {
+      // Mirror the required acknowledgement client-side; the server also enforces it.
+      status.textContent = "Please confirm the privacy acknowledgement to continue.";
+      return null;
+    }
+    return {
+      email: email,
+      privacy_ack: true,
+      mailing_opt_in: form.querySelector("#ea-mailing").checked
+    };
+  });
+  wire("ml-form", "ml-status", "/v1/mailing-list/subscribe", function (form, email) {
+    return { email: email };
+  });
+})();
+</script>
+</body>
+</html>
