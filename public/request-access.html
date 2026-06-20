@@ -84,9 +84,9 @@
   var API = "https://app.aithernet.online/api";
   // Cloudflare Turnstile public site key. The operator replaces the placeholder before deploy.
   var SITEKEY = "0x4AAAAAADoI4UGkTQw6ILLv";
-  if (SITEKEY === "0x4AAAAAADoI4UGkTQw6ILLv") {
-    // Not configured yet: remove the widgets so the page is not broken (the backend treats
-    // Turnstile as optional unless it is configured as required).
+  // Render the widgets only when a real key is configured. Turnstile site keys start with "0x";
+  // an unset/placeholder key removes the widgets so the page isn't broken.
+  if (!SITEKEY || SITEKEY.indexOf("0x") !== 0) {
     document.querySelectorAll(".cf-turnstile").forEach(function (e) { e.remove(); });
   }
   var GENERIC = "Thanks. If your address is eligible, you'll receive an email shortly — please " +
