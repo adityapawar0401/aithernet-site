@@ -81,7 +81,7 @@
 (function () {
   // The dynamic backend lives on the app host; the static site posts the forms cross-origin to it
   // (the control plane allows ONLY this exact origin via CORS).
-  var API = "https://app.aithernet.online";
+  var API = "https://app.aithernet.online/api";
   // Cloudflare Turnstile public site key. The operator replaces the placeholder before deploy.
   var SITEKEY = "TURNSTILE_SITE_KEY";
   if (SITEKEY === "TURNSTILE_SITE_KEY") {
