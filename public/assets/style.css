@@ -64,3 +64,18 @@ label.check input{margin-top:3px}
 .cf-turnstile{margin:14px 0}
 form button{margin-top:8px;cursor:pointer;border:0}
 button:disabled{opacity:.6;cursor:default}
+
+/* Visible keyboard focus for links + interactive elements (a11y). */
+a:focus-visible,.btn:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+
+/* Mobile navigation: the header nav becomes a horizontally-scrollable row instead of a tall
+   stacked block; brand + primary actions stay on the first row. */
+@media (max-width:640px){
+  .bar{gap:10px 14px;padding:10px 16px}
+  .bar nav{order:3;width:100%;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  .bar nav a{display:inline-block;padding:4px 0;margin-right:14px}
+  main{padding:24px 16px 64px}
+  h1{font-size:24px}
+  h2{font-size:19px}
+  table{display:block;overflow-x:auto}
+}
