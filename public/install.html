@@ -41,18 +41,25 @@
   </ol>
 
   <h2>Verify &amp; install (Ubuntu 24.04 amd64)</h2>
-  <p>After downloading the release directory (manifest, signature, checksums, package and the
-    public key) from the portal:</p>
-  <pre><code># 1) verify the signed manifest, then the artifact checksums
+  <p>From the portal Downloads page, download (into one directory) the package plus the
+    verification files served alongside it: <code>manifest.json</code>, <code>manifest.sig</code>,
+    the production public key <code>aithernet-release.pub</code> (PEM), and <code>SHA256SUMS</code>.
+    Verify <strong>before</strong> installing, using only standard tools:</p>
+  <pre><code># 1) BEFORE installing — verify checksums, then the detached Ed25519 signature
+#    over the manifest with the production public key (standard OpenSSL, no Aithernet tools yet)
+sha256sum -c SHA256SUMS
 openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
   -rawin -in manifest.json -sigfile manifest.sig
-sha256sum -c SHA256SUMS
 
 # 2) install the node package
 sudo apt install ./aithernet_&lt;version&gt;_amd64.deb
 
 # 3) the documented CLI is now on PATH
-aithernet --help</code></pre>
+aithernet --help
+
+# 4) AFTER installing — an optional all-in-one re-check of the same downloaded directory
+#    (this command ships in the .deb, so it is only available once installed)
+aithernet release verify ./</code></pre>
 
   <h2>Set up, enroll and start</h2>
   <pre><code># prepare state + node identity
