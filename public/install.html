@@ -51,7 +51,11 @@ sha256sum -c SHA256SUMS
 openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
   -rawin -in manifest.json -sigfile manifest.sig
 
-# 2) install the node package
+# 2) refresh APT package indexes FIRST, then install the node package.
+#    `apt update` is required on a fresh Ubuntu image — without it APT has no candidate for
+#    python3-venv (and the recommended gnuradio / uhd-host / soapysdr-tools), and the install
+#    fails with "python3-venv but it is not installable".
+sudo apt update
 sudo apt install ./aithernet_&lt;version&gt;_amd64.deb
 
 # 3) the documented CLI is now on PATH
@@ -60,6 +64,16 @@ aithernet --help
 # 4) AFTER installing — an optional all-in-one re-check of the same downloaded directory
 #    (this command ships in the .deb, so it is only available once installed)
 aithernet release verify ./</code></pre>
+
+  <div class="note">APT resolves the package's dependencies (<code>python3-venv</code>) and the
+    recommended SDR packages (<code>gnuradio</code>, <code>uhd-host</code>,
+    <code>soapysdr-tools</code>) from Ubuntu's signed <code>main</code>/<code>universe</code>
+    repositories. If <code>apt install</code> reports a package "is not installable" on a fresh
+    machine, run <code>sudo apt update</code> and retry. <strong>Do not</strong> use <code>pip</code>
+    for GNU Radio, SoapySDR, UHD or <code>python3-venv</code> — they are system packages. The
+    bundled installer can do this for you: <code>./aithernet-install.sh --deb
+    ./aithernet_&lt;version&gt;_amd64.deb</code> (validates the platform, refreshes stale indexes,
+    retries, never uses pip).</div>
 
   <h2>Set up, enroll and start</h2>
   <pre><code># prepare state + node identity
