@@ -69,7 +69,7 @@ openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
 #    python3-venv (and the recommended gnuradio / uhd-host / soapysdr-tools), and the install
 #    fails with "python3-venv but it is not installable".
 sudo apt update
-sudo apt install ./aithernet_&lt;version&gt;_amd64.deb
+sudo apt install ./aithernet_0.8.0~beta.9_amd64.deb
 
 # 3) the documented CLI is now on PATH
 aithernet --help
@@ -85,40 +85,55 @@ aithernet release verify ./</code></pre>
     machine, run <code>sudo apt update</code> and retry. <strong>Do not</strong> use <code>pip</code>
     for GNU Radio, SoapySDR, UHD or <code>python3-venv</code> — they are system packages. The
     bundled installer can do this for you: <code>./aithernet-install.sh --deb
-    ./aithernet_&lt;version&gt;_amd64.deb</code> (validates the platform, refreshes stale indexes,
+    ./aithernet_0.8.0~beta.9_amd64.deb</code> (validates the platform, refreshes stale indexes,
     retries, never uses pip).</div>
 
-  <h2>Set up, enroll and start</h2>
-  <pre><code># prepare state + node identity
-aithernet setup --node-name "my-sdr-node"
+  <h2>Set up and run (beta.9)</h2>
+  <pre><code># one guided setup, then run your work with one command
+aithernet setup
+aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
 
-# install a hardware profile of SIGNED distribution packages (no source build)
-sudo aithernet hardware install --profile pluto
-aithernet hardware doctor          # read-only readiness + remediation
+  <ul class="tight">
+    <li><code>aithernet setup</code> detects and configures your local workstation: it initializes the
+      canonical node identity and state, guides you through connecting a <strong>coordinator</strong>
+      (planner) and a <strong>coding agent</strong> in plain language, configures and verifies the
+      managed user service, resolves supported CLI runtimes automatically, verifies GNU Radio and the
+      managed signed RF-MCP component, and runs a software-only readiness check.</li>
+    <li><code>aithernet run "&lt;prompt&gt;"</code> creates the mission, starts it, shows progress,
+      returns the result, and prints the mission, run and artifact IDs — one command, no separate
+      submit/start/watch.</li>
+    <li><code>aithernet doctor --repair</code> safely repairs common local configuration drift.</li>
+    <li>No manual systemd units, YAML, <code>PATH</code>/NVM, environment files, or provider-adapter
+      knowledge is expected. Upgrading from beta.8? Just install the new package and run
+      <code>aithernet setup</code> — it detects and migrates the existing install (preserving your
+      node ID, name, missions, events, artifacts and provider configuration).</li>
+  </ul>
 
-# enroll to the hosted control plane with a one-time code from the portal
-aithernet enroll --base-url https://app.aithernet.online/api --code &lt;ENROLLMENT_CODE&gt;
+  <p>Signed-in customers get the exact versioned commands, the authorized filenames, and the
+    verification key on the portal <a href="https://app.aithernet.online/#/portal/getting-started">Getting
+    started</a> and Downloads pages.</p>
 
-# run the node as a managed background service (recommended).
-# Personal workstation (no sudo; the node inherits your Gemini/Codex login):
-aithernet service install                  # install + enable the per-user service
-aithernet service status                   # start | stop | restart | status are the controls
-# — or, appliance / shared host (system-wide, requires root):
-sudo systemctl enable --now aithernet-node
+  <details>
+    <summary>Advanced / operator workflows (not needed for the standard journey)</summary>
+    <p>These remain available for operators and automation, but are <strong>not</strong> part of normal
+      onboarding. The standard journey above is <code>setup</code> → <code>run</code>.</p>
+    <ul class="tight">
+      <li>Connect providers explicitly: <code>aithernet agents connect coordinator</code> /
+        <code>aithernet agents connect coding</code>.</li>
+      <li>Lower-level mission lifecycle: <code>aithernet mission submit "&lt;prompt&gt;"</code> (create
+        only), <code>aithernet mission start</code>, <code>aithernet mission watch</code> (read-only),
+        <code>aithernet mission retry</code>.</li>
+      <li>Run in the foreground for a quick interactive session: <code>aithernet start</code>
+        (Ctrl-C stops it). The managed service started by <code>setup</code> is the supported way to
+        keep a node up across logout/reboot.</li>
+      <li>Hosted/fleet enrollment and hardware-profile installation apply to hosted or
+        physical-SDR deployments, not the standalone software-only workstation journey.</li>
+    </ul>
+  </details>
 
-# confirm the node is up and talking to the control plane
-aithernet hosted status
-aithernet hosted heartbeat</code></pre>
-
-  <div class="note"><code>aithernet start</code> runs a node in the <strong>foreground</strong>
-    (attached to your terminal; Ctrl-C stops it). Use it for a quick interactive run. For a node
-    that stays up across logout/reboot, use the managed service above and control it with
-    <code>aithernet service start|status|stop|restart</code> — don't run a second
-    <code>aithernet start</code> against a port a service already owns.</div>
-
-  <div class="note">The RF backend is a pinned, signed GNU Radio MCP component installed into a
-    managed location — never a developer checkout. See
-    <a href="/rf-notices.html">RF component &amp; source notices</a>.</div>
+  <div class="note">The RF backend is a pinned, signed GNU Radio MCP component installed and verified
+    by <code>aithernet setup</code> into a managed location — never a developer checkout or a manual
+    <code>git clone</code>. See <a href="/rf-notices.html">RF component &amp; source notices</a>.</div>
 
   <h2>Receive-first &amp; permissions</h2>
   <ul class="tight">
@@ -129,9 +144,10 @@ aithernet hosted heartbeat</code></pre>
       inbound ports and never exposes its local API to the Internet.</li>
   </ul>
 
-  <p class="muted">Exact versioned commands and the verification key are provided with your release
-    in the portal. Commands on this page show <code>&lt;version&gt;</code> as a stand-in you replace
-    with your actual release version.</p>
+  <p class="muted">This page shows the current beta release
+    (<code>aithernet_0.8.0~beta.9_amd64.deb</code>). The authenticated portal always supplies the
+    exact authorized filenames, the per-release verification key, and the complete copyable
+    Getting started journey for your release.</p>
 </main>
 
 <footer class="site"><div class="bar">

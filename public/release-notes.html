@@ -51,16 +51,31 @@
   </ul>
 
   <h2>What is being qualified</h2>
-  <p>Current early-access work focuses on the complete customer-installable node: signed managed
-    components (the GNU Radio MCP backend), hardware installation profiles, guided setup, hosted
-    enrollment, and physical SDR qualification. The following have <strong>not</strong> been
-    completed and are not claimed:</p>
+  <p>The current early-access build (0.8.0-beta.9) has <strong>completed and passed</strong> the
+    following, automatically, on a clean source-hidden install:</p>
   <ul class="tight">
-    <li>clean-machine end-to-end installation acceptance;</li>
-    <li>full reboot / disconnect-reconnect field qualification;</li>
-    <li>production email (SMTP) delivery acceptance;</li>
-    <li>encrypted Google&nbsp;Drive archival acceptance;</li>
-    <li>multi-node over-the-air and long-duration soak validation.</li>
+    <li>production-signed release publication and authenticated customer download verification;</li>
+    <li>source-hidden <code>.deb</code> installation on clean Ubuntu&nbsp;24.04 amd64 as a normal user;</li>
+    <li>guided <code>aithernet setup</code> producing a real canonical node identity and absolute
+      state paths (no placeholder), with the managed user service configured automatically;</li>
+    <li>a deterministic one-command software mission (<code>aithernet run</code>) completing through
+      the canonical engine, with registered artifacts;</li>
+    <li>managed signed RF-MCP verification and software-only GNU Radio execution;</li>
+    <li>beta.8&nbsp;→&nbsp;beta.9 migration qualification (preserving identity, missions, events,
+      artifacts);</li>
+    <li>documentation command-regression testing against the packaged CLI.</li>
+  </ul>
+  <p>Genuine limitations that are <strong>not</strong> claimed:</p>
+  <ul class="tight">
+    <li>invitation-only early access; receive-only — no RF transmission;</li>
+    <li>WSL is software-only and its audio endpoints are not SDR hardware;</li>
+    <li>physical Pluto / USB-SDR qualification is not included;</li>
+    <li>real Gemini / Codex external-provider missions remain optional live canaries rather than
+      mandatory deterministic release qualification;</li>
+    <li>full reboot / disconnect-reconnect, multi-node over-the-air, and long-duration soak
+      validation are not claimed;</li>
+    <li>production email (SMTP) delivery and encrypted Google&nbsp;Drive archival acceptance are not
+      claimed.</li>
   </ul>
 
   <p class="muted">Detailed, dated release notes for each early-access build are provided in the
