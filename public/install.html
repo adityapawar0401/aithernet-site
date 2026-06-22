@@ -46,6 +46,13 @@
     mission. <code>sudo</code> is for APT only; never use <code>pip</code> for GNU Radio, SoapySDR,
     UHD, libiio or <code>python3-venv</code>.</div>
 
+  <div class="note">The current beta is a <strong>one-command experience</strong>: after
+    <code>aithernet setup</code>, run your work with a single command —
+    <code>aithernet run "&lt;what you want done&gt;"</code> — which creates, starts, monitors and
+    returns the result. No separate submit/start/watch, no editing systemd units, PATH or YAML, and
+    no knowing provider internals. If anything drifts, <code>aithernet doctor --repair</code> fixes
+    the common cases. Receive-only; no RF transmission.</div>
+
   <h2>Verify &amp; install (Ubuntu 24.04 amd64)</h2>
   <p>From the portal Downloads page, download (into one directory) the package plus the
     verification files served alongside it: <code>manifest.json</code>, <code>manifest.sig</code>,
