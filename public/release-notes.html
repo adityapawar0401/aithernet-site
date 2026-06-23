@@ -85,9 +85,12 @@
     test uses the operator's own coordinator credential.</div>
   <p>Genuine limitations that are <strong>not</strong> claimed:</p>
   <ul class="tight">
-    <li>invitation-only early access; receive-only — no RF transmission;</li>
+    <li>invitation-only early access; physical TX is operator-controlled and OFF by default — the
+      operator enables and configures it locally on TX-capable hardware;</li>
+    <li>no physical over-the-air transmission was performed during release qualification (automated
+      tests use mocks + loopback and do not radiate); cabled/shielded/OTA testing is operator-run;</li>
     <li>WSL is software-only and its audio endpoints are not SDR hardware;</li>
-    <li>physical Pluto / USB-SDR qualification is not included;</li>
+    <li>physical Pluto / USB-SDR transmission was not tested on hardware here (operator-run);</li>
     <li>real Gemini / Codex external-provider missions remain optional live canaries rather than
       mandatory deterministic release qualification;</li>
     <li>full reboot / disconnect-reconnect, multi-node over-the-air, and long-duration soak
