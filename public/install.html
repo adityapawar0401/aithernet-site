@@ -69,7 +69,7 @@ openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
 #    python3-venv (and the recommended gnuradio / uhd-host / soapysdr-tools), and the install
 #    fails with "python3-venv but it is not installable".
 sudo apt update
-sudo apt install ./aithernet_0.8.0~beta.10_amd64.deb
+sudo apt install ./aithernet_1.0.0~beta.1_amd64.deb
 
 # 3) the documented CLI is now on PATH
 aithernet --help
@@ -85,10 +85,10 @@ aithernet release verify ./</code></pre>
     machine, run <code>sudo apt update</code> and retry. <strong>Do not</strong> use <code>pip</code>
     for GNU Radio, SoapySDR, UHD or <code>python3-venv</code> — they are system packages. The
     bundled installer can do this for you: <code>./aithernet-install.sh --deb
-    ./aithernet_0.8.0~beta.10_amd64.deb</code> (validates the platform, refreshes stale indexes,
+    ./aithernet_1.0.0~beta.1_amd64.deb</code> (validates the platform, refreshes stale indexes,
     retries, never uses pip).</div>
 
-  <h2>Set up and run (beta.10)</h2>
+  <h2>Set up and run (1.0.0-beta.1)</h2>
   <pre><code># one guided setup, then run your work with one command
 aithernet setup
 aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
@@ -135,6 +135,25 @@ aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
     by <code>aithernet setup</code> into a managed location — never a developer checkout or a manual
     <code>git clone</code>. See <a href="/rf-notices.html">RF component &amp; source notices</a>.</div>
 
+  <h2>SDR peer transport (1.0.0-beta.1)</h2>
+  <ul class="tight">
+    <li><strong>Simulated RF peer transport is included</strong>: canonical peer messages can travel
+      through authenticated encryption, fragmentation, CRC, FEC, BPSK/QPSK modulation, an impaired
+      simulated channel, demodulation and reassembly to the receiving node's canonical ingress —
+      e.g. <code>aithernet run --on &lt;peer&gt; --transport simulated_rf "&lt;objective&gt;"</code>.
+      The receiving node's MissionEngine policy stays authoritative; RF is never silently downgraded
+      to IP.</li>
+    <li><strong>Physical RF transmission is disabled</strong> and <strong>not yet qualified</strong>.
+      The <code>rf_ota</code> physical transport is closed; <code>aithernet rf tx-policy</code>
+      reports <code>physical_tx: disabled</code>.</li>
+    <li><strong>No frequency is automatically chosen.</strong> Physical transmission requires later,
+      separately authorized cabled, shielded, and OTA qualification with operator-supplied RF
+      parameters and compliance with local spectrum rules.</li>
+    <li>The optional live test where an external coordinator drives the coding agent to generate a
+      new modem requires <strong>your own coordinator credential</strong>; it is a post-release
+      operator test and is not part of the shipped qualification.</li>
+  </ul>
+
   <h2>Receive-first &amp; permissions</h2>
   <ul class="tight">
     <li>The node is <strong>receive-first</strong>; transmission is disabled by default.</li>
@@ -145,7 +164,7 @@ aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
   </ul>
 
   <p class="muted">This page shows the current beta release
-    (<code>aithernet_0.8.0~beta.10_amd64.deb</code>). The authenticated portal always supplies the
+    (<code>aithernet_1.0.0~beta.1_amd64.deb</code>). The authenticated portal always supplies the
     exact authorized filenames, the per-release verification key, and the complete copyable
     Getting started journey for your release.</p>
 </main>

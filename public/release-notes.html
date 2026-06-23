@@ -51,28 +51,33 @@
   </ul>
 
   <h2>What is being qualified</h2>
-  <p>The current early-access build (0.8.0-beta.10) has <strong>completed and passed</strong> the
-    following, automatically, on a clean source-hidden install:</p>
+  <p>The current early-access build (1.0.0-beta.1) introduces secure, pluggable <strong>SDR peer
+    transport</strong>. It has <strong>completed and passed</strong> the following software
+    qualification, automatically, on a clean source-hidden install:</p>
   <ul class="tight">
     <li>production-signed release publication and authenticated customer download verification;</li>
     <li>source-hidden <code>.deb</code> installation on clean Ubuntu&nbsp;24.04 amd64 as a normal user;</li>
-    <li>guided <code>aithernet setup</code> producing a real canonical node identity and absolute
-      state paths (no placeholder), with the managed user service configured automatically;</li>
-    <li>generic provider-secret persistence (arbitrary names) that propagates to the running service
-      and never leaks the value into config, logs, events, datasets or process arguments;</li>
-    <li>guided OpenAI-compatible / Z.AI coordinator configuration with URL+model validation, plus
-      normalized actionable provider errors and recoverable quota handling (a quota block is not
-      mislabeled budget-exhausted);</li>
-    <li>deterministic MCP tool-schema preflight (alias canonicalization; invalid arguments rejected
-      before execution) and managed signed RF-MCP verification with software-only GNU Radio;</li>
-    <li>a deterministic one-command software mission (<code>aithernet run</code>) completing through
-      the canonical engine, with registered artifacts;</li>
-    <li>secure node-to-node peer pairing and remote-mission submission (the receiving node owns
-      policy; a request is never remote shell);</li>
-    <li>owner-operated research collection into a local append-only spool with secret-scanning +
-      quarantine, and leakage-free, mission-grouped training-dataset builders;</li>
+    <li>a <strong>simulated-RF two-node peer round trip</strong>: a canonical peer message through
+      AEAD authentication, fragmentation, CRC, FEC, BPSK/QPSK modulation, an impaired channel,
+      demodulation, validation and reassembly to the receiving node's canonical ingress, and a
+      signed result back over the RF return path — with replay/expiry/wrong-recipient/tamper
+      rejection, retransmission, duplicate suppression and correlation preserved;</li>
+    <li><code>run --on --transport simulated_rf</code> integrated into the runtime; the receiving
+      node's MissionEngine policy stays authoritative; no silent simulated-RF&nbsp;→&nbsp;IP downgrade;</li>
+    <li>the deterministic <strong>generated-modem validation gate</strong> (unapproved/invalid/unsafe
+      candidates rejected; valid candidates promoted only to <em>simulation</em> approval and still
+      prohibited from physical TX);</li>
+    <li>RF research records persisted with secret-scanning (no credentials or link keys), and
+      leakage-free mission-grouped RF dataset snapshots with verified Google&nbsp;Drive upload;</li>
     <li>documentation command-regression testing against the packaged CLI.</li>
   </ul>
+  <div class="note"><strong>Physical RF transmission is disabled and unqualified.</strong> The
+    <code>rf_ota</code> physical transport is closed; no operating frequency is automatically chosen;
+    hardware transmission requires later, separately authorized cabled, shielded and OTA
+    qualification. <strong>Post-release live qualification pending</strong> because no external
+    coordinator credential was configured during release qualification — the live
+    external-coordinator&nbsp;→&nbsp;coding-agent&nbsp;→&nbsp;generated-modem scenario is a documented
+    operator test, not a code defect.</div>
   <p>Genuine limitations that are <strong>not</strong> claimed:</p>
   <ul class="tight">
     <li>invitation-only early access; receive-only — no RF transmission;</li>
