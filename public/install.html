@@ -69,7 +69,7 @@ openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
 #    python3-venv (and the recommended gnuradio / uhd-host / soapysdr-tools), and the install
 #    fails with "python3-venv but it is not installable".
 sudo apt update
-sudo apt install ./aithernet_0.8.0~beta.9_amd64.deb
+sudo apt install ./aithernet_0.8.0~beta.10_amd64.deb
 
 # 3) the documented CLI is now on PATH
 aithernet --help
@@ -85,10 +85,10 @@ aithernet release verify ./</code></pre>
     machine, run <code>sudo apt update</code> and retry. <strong>Do not</strong> use <code>pip</code>
     for GNU Radio, SoapySDR, UHD or <code>python3-venv</code> — they are system packages. The
     bundled installer can do this for you: <code>./aithernet-install.sh --deb
-    ./aithernet_0.8.0~beta.9_amd64.deb</code> (validates the platform, refreshes stale indexes,
+    ./aithernet_0.8.0~beta.10_amd64.deb</code> (validates the platform, refreshes stale indexes,
     retries, never uses pip).</div>
 
-  <h2>Set up and run (beta.9)</h2>
+  <h2>Set up and run (beta.10)</h2>
   <pre><code># one guided setup, then run your work with one command
 aithernet setup
 aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
@@ -104,7 +104,7 @@ aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
       submit/start/watch.</li>
     <li><code>aithernet doctor --repair</code> safely repairs common local configuration drift.</li>
     <li>No manual systemd units, YAML, <code>PATH</code>/NVM, environment files, or provider-adapter
-      knowledge is expected. Upgrading from beta.8? Just install the new package and run
+      knowledge is expected. upgrading from an earlier beta? Just install the new package and run
       <code>aithernet setup</code> — it detects and migrates the existing install (preserving your
       node ID, name, missions, events, artifacts and provider configuration).</li>
   </ul>
@@ -145,7 +145,7 @@ aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
   </ul>
 
   <p class="muted">This page shows the current beta release
-    (<code>aithernet_0.8.0~beta.9_amd64.deb</code>). The authenticated portal always supplies the
+    (<code>aithernet_0.8.0~beta.10_amd64.deb</code>). The authenticated portal always supplies the
     exact authorized filenames, the per-release verification key, and the complete copyable
     Getting started journey for your release.</p>
 </main>
