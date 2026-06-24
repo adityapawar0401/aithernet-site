@@ -51,29 +51,34 @@
   </ul>
 
   <h2>What is being qualified</h2>
-  <p>The current early-access build (1.0.0-beta.2) ships secure, pluggable <strong>SDR peer
-    transport</strong> with <strong>operator-controlled physical transmission</strong>. It has
-    <strong>completed and passed</strong> the following software qualification, automatically, on a
-    clean source-hidden install:</p>
+  <p>The current early-access build (1.0.0-beta.3) adds the <strong>account-bound fleet</strong>,
+    <strong>tenant-isolated secure meshes</strong>, and the <strong>complete OTA link protocol</strong>
+    on top of the operator-controlled SDR peer transport. It has <strong>completed and passed</strong>
+    the following software qualification, automatically, on a clean source-hidden install:</p>
   <ul class="tight">
     <li>production-signed release publication and authenticated customer download verification;</li>
     <li>source-hidden <code>.deb</code> installation on clean Ubuntu&nbsp;24.04 amd64 as a normal user;</li>
-    <li>a <strong>simulated-RF two-node peer round trip</strong>: a canonical peer message through
-      AEAD authentication, fragmentation, CRC, FEC, BPSK/QPSK modulation, an impaired channel,
-      demodulation, validation and reassembly to the receiving node's canonical ingress, and a
-      signed result back — with replay/expiry/wrong-recipient/tamper rejection, retransmission,
-      duplicate suppression and correlation preserved;</li>
-    <li><code>run --on --transport simulated_rf|rf_ota</code> integrated; the receiving node's
-      MissionEngine policy stays authoritative; no silent RF&nbsp;→&nbsp;IP downgrade;</li>
-    <li><strong>operator-controlled physical TX</strong>: available once the local operator enables
-      it (<code>rf tx enable</code>) with a TX-capable device; gated only by technical-correctness
-      controls (device capability + ranges, operator ceilings, peer authentication, local plan
-      confirmation) — <strong>no vendor/cloud authorization</strong>; the managed executor takes a
-      structured plan; profile qualification state informs but never prohibits; PlutoSDR capability
-      discovery;</li>
-    <li>RF research records (including physical-TX) persisted with secret-scanning (no credentials
-      or keys), and leakage-free mission-grouped RF dataset snapshots with verified Google&nbsp;Drive
-      upload;</li>
+    <li><strong>hosted enrollment + fleet</strong>: one-time tenant-scoped codes (digest-only,
+      revocable, atomically consumed), signed heartbeats with online/stale/offline/degraded/
+      never_seen/revoked states, node rename, and strict tenant isolation;</li>
+    <li><strong>tenant-isolated meshes</strong>: a peer message is authorized by explicit mesh
+      membership, not mere key trust or reachability; cross-tenant traffic is rejected before
+      MissionEngine ingress unless an explicit shared mesh exists; revocation takes effect
+      immediately; standalone meshes work fully offline;</li>
+    <li>the <strong>complete OTA MAC / link protocol</strong> (deterministic, no radiation): RTS/CTS
+      reservation, carrier sense, randomized backoff, hidden-node mitigation, three-node contention
+      with fairness/no-starvation, two-node TDD, BLOCK_ACK-bitmap selective retransmission, and the
+      frame set BEACON/RTS/CTS/DATA/BLOCK_ACK/NACK/CANCEL/FIN/DELIVERY_RECEIPT;</li>
+    <li>the <strong>four acknowledgement layers</strong> — link ACK, delivery receipt, mission
+      acknowledgement, mission result — kept distinct (a radio frame ACK is never reported as
+      mission success);</li>
+    <li><strong>operator-controlled physical TX</strong> (unchanged from beta.2): available once the
+      local operator enables it with a TX-capable device, gated only by technical-correctness
+      controls, with <strong>no vendor/cloud authorization</strong>;</li>
+    <li>RF research records (mesh-authorization, channel-access, RTS/CTS outcomes, collision
+      recovery, retransmission, delivery latency, fleet health, cross-tenant rejection) with
+      pseudonymized tenant/mesh/node ids and secret-scanning, and leakage-free mission-grouped
+      dataset snapshots;</li>
     <li>documentation command-regression testing against the packaged CLI.</li>
   </ul>
   <div class="note"><strong>Physical SDR transmission is available under local operator control.</strong>

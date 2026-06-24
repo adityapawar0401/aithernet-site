@@ -70,7 +70,7 @@ openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
 #    python3-venv (and the recommended gnuradio / uhd-host / soapysdr-tools), and the install
 #    fails with "python3-venv but it is not installable".
 sudo apt update
-sudo apt install ./aithernet_1.0.0~beta.2_amd64.deb
+sudo apt install ./aithernet_1.0.0~beta.3_amd64.deb
 
 # 3) the documented CLI is now on PATH
 aithernet --help
@@ -86,10 +86,10 @@ aithernet release verify ./</code></pre>
     machine, run <code>sudo apt update</code> and retry. <strong>Do not</strong> use <code>pip</code>
     for GNU Radio, SoapySDR, UHD or <code>python3-venv</code> — they are system packages. The
     bundled installer can do this for you: <code>./aithernet-install.sh --deb
-    ./aithernet_1.0.0~beta.2_amd64.deb</code> (validates the platform, refreshes stale indexes,
+    ./aithernet_1.0.0~beta.3_amd64.deb</code> (validates the platform, refreshes stale indexes,
     retries, never uses pip).</div>
 
-  <h2>Set up and run (1.0.0-beta.2)</h2>
+  <h2>Set up and run (1.0.0-beta.3)</h2>
   <pre><code># one guided setup, then run your work with one command
 aithernet setup
 aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
@@ -136,7 +136,7 @@ aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
     by <code>aithernet setup</code> into a managed location — never a developer checkout or a manual
     <code>git clone</code>. See <a href="/rf-notices.html">RF component &amp; source notices</a>.</div>
 
-  <h2>SDR peer transport (1.0.0-beta.2)</h2>
+  <h2>SDR peer transport (1.0.0-beta.3)</h2>
   <ul class="tight">
     <li><strong>Simulated + physical SDR peer transport.</strong> Canonical peer messages travel
       through authenticated encryption, fragmentation, CRC, FEC, BPSK/QPSK modulation, a channel,
@@ -158,6 +158,29 @@ aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
       credential.</li>
   </ul>
 
+  <h2>Account-bound fleet, tenant-isolated meshes &amp; the OTA link protocol (1.0.0-beta.3)</h2>
+  <ul class="tight">
+    <li><strong>Account vs node identity.</strong> Your account (email + immutable account ID) is
+      separate from each node's Ed25519 identity. The email is never a node key and is never sent
+      over the RF peer protocol. Packages are generic and byte-identical for every customer; the
+      one-time enrollment code binds a node to your tenant at install time.</li>
+    <li><strong>Tenant-isolated meshes.</strong> A <em>mesh</em> is the explicit trust group that
+      authorizes peer communication. Two nodes that can merely reach each other — even mutually
+      key-trusted — cannot exchange messages until they share a mesh. Cross-tenant communication
+      requires an explicit shared mesh; it never happens just because two nodes can hear each other
+      over RF. Meshes work fully offline in standalone mode and synchronize through the control
+      plane when hosted.</li>
+    <li><strong>Complete OTA link protocol.</strong> RTS/CTS reservation, carrier sense, randomized
+      backoff and hidden-node mitigation on a shared channel, or a reserved TDD slot point-to-point;
+      selective retransmission via a BLOCK_ACK bitmap; the frame set BEACON/RTS/CTS/DATA/BLOCK_ACK/
+      NACK/CANCEL/FIN/DELIVERY_RECEIPT. The four acknowledgement layers — link ACK, delivery receipt,
+      mission acknowledgement and mission result — stay distinct; a radio frame ACK is never reported
+      as mission success.</li>
+    <li><strong>Fleet visibility.</strong> Signed heartbeats drive explicit
+      online/stale/offline/degraded/never_seen/revoked states in the portal; node rename, enrollment
+      code revocation and mesh management are in the authenticated portal.</li>
+  </ul>
+
   <h2>Receive-first &amp; permissions</h2>
   <ul class="tight">
     <li>The node is <strong>receive-first</strong>; transmission is disabled by default.</li>
@@ -168,7 +191,7 @@ aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
   </ul>
 
   <p class="muted">This page shows the current beta release
-    (<code>aithernet_1.0.0~beta.2_amd64.deb</code>). The authenticated portal always supplies the
+    (<code>aithernet_1.0.0~beta.3_amd64.deb</code>). The authenticated portal always supplies the
     exact authorized filenames, the per-release verification key, and the complete copyable
     Getting started journey for your release.</p>
 </main>
