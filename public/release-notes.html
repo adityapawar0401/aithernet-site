@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Release notes — Aithernet</title>
-<meta name="description" content="Aithernet release notes. The current early-access release is 1.0.0-beta.3, adding account-bound fleets, tenant-isolated meshes, and a complete OTA link protocol.">
+<meta name="description" content="Aithernet release notes. The current early-access release is 1.0.0-beta.4, a provider-neutral agent runtime supporting Claude, Codex, Anthropic, OpenAI, Gemini, OpenAI-compatible and local providers.">
 <link rel="canonical" href="https://www.aithernet.online/release-notes.html">
 <meta property="og:title" content="Release notes — Aithernet">
-<meta property="og:description" content="What's new in Aithernet 1.0.0-beta.3.">
+<meta property="og:description" content="What's new in Aithernet 1.0.0-beta.4.">
 <meta property="og:url" content="https://www.aithernet.online/release-notes.html">
 <meta property="og:image" content="https://www.aithernet.online/assets/og.svg">
 <meta name="theme-color" content="#2347c5">
@@ -46,34 +46,40 @@
   <section class="section" style="padding-top:24px"><div class="wrap">
     <div class="prose" style="max-width:760px">
       <p><span class="tag"><span class="dot"></span> Current release</span></p>
-      <h2 style="margin-top:14px">1.0.0-beta.3</h2>
+      <h2 style="margin-top:14px">1.0.0-beta.4</h2>
       <p class="muted" style="margin-top:-6px">Early access &middot; current</p>
 
       <h3>Highlights</h3>
       <ul>
-        <li><strong>Account-bound fleets.</strong> Enroll nodes to your account and see them appear
-          automatically, with clear online, stale, offline, and degraded status.</li>
-        <li><strong>Tenant-isolated meshes.</strong> Organize nodes into meshes that explicitly
-          authorize communication. Nodes outside a shared mesh cannot talk to each other.</li>
-        <li><strong>Complete over-the-air link protocol.</strong> Robust SDR communication with
-          channel reservation, acknowledgement, retransmission, and delivery semantics.</li>
+        <li><strong>Provider-neutral agent runtime.</strong> Configure the coordinator and coding
+          agent independently and mix providers freely — Claude, Codex, Anthropic, OpenAI, Gemini,
+          any OpenAI-compatible endpoint, and local models.</li>
+        <li><strong>Bring your own account.</strong> Use a Claude or ChatGPT subscription, a
+          provider API key, a cloud account (Bedrock / Vertex), or your own local compute. No single
+          vendor is required.</li>
+        <li><strong>Clear capacity and fallback.</strong> See how each role's allowance is used,
+          group roles that share an account into one capacity pool, and set explicit fallback chains.</li>
       </ul>
 
       <h3>New capabilities</h3>
       <ul>
-        <li>First-class mesh management in the portal and CLI — create meshes, add and remove nodes,
-          and manage membership.</li>
-        <li>Node management: rename nodes, manage enrollment codes, and review mesh membership from
-          the portal.</li>
-        <li>Fleet status with online, stale, offline, degraded, never-seen, and revoked states.</li>
-        <li>Standalone meshes that work fully offline, with no hosted account required.</li>
-        <li>Structured operational records and datasets for mesh, fleet, and link-layer activity.</li>
+        <li>First-class coordinator providers: Claude (Pro/Max), Anthropic API, Bedrock, Vertex,
+          OpenAI API, OpenAI-compatible, local, Gemini API, Gemini Vertex, and the installed Google CLI.</li>
+        <li>First-class coding providers: Codex (ChatGPT), Codex/OpenAI API, Claude Code, and local.</li>
+        <li>Recommended presets and explicit per-role fallback chains — fallback is always recorded
+          and never silent.</li>
+        <li>Accurate, per-provider billing labels (subscription allowance, separate API billing,
+          cloud-provider billing, or local compute) shown during setup.</li>
+        <li>New <code>agents</code> commands: list-providers, inspect-provider, capacity, fallbacks,
+          set-fallbacks, presets, disconnect.</li>
       </ul>
 
       <h3>Improvements</h3>
       <ul>
-        <li>Clearer separation between message delivery and mission outcomes across the product.</li>
-        <li>Simpler, more consistent node and mesh presentation in the portal.</li>
+        <li>A single canonical, role-aware provider interface; coding capability is never inferred
+          from the ability to produce text.</li>
+        <li>Clearer, normalized provider errors with concise operator actions — never exposing
+          credentials.</li>
       </ul>
 
       <h3>Compatibility</h3>
@@ -85,19 +91,21 @@
       <h3>Known limitations</h3>
       <ul>
         <li>Early access is invitation-only.</li>
-        <li>Physical transmission is operator-controlled and configured locally on supported
-          hardware.</li>
+        <li>Credentials are referenced by name and stored only in the protected secret store — never
+          in config, datasets, logs, artifacts, or the portal.</li>
+        <li>Cloud (Bedrock / Vertex) adapters are configurable now; live qualification of those exact
+          methods is operator-run on your own cloud account.</li>
       </ul>
 
       <h3>Upgrade</h3>
       <p>Download the new package from the portal, verify it, and install it over your existing
-        node. Setup and enrollment are preserved.</p>
-      <pre><code>sudo apt install ./aithernet_1.0.0~beta.3_amd64.deb</code></pre>
+        node. Setup, enrollment, and provider configuration are preserved.</p>
+      <pre><code>sudo apt install ./aithernet_1.0.0~beta.4_amd64.deb</code></pre>
 
       <hr style="border:none;border-top:1px solid var(--line);margin:40px 0">
       <h2>Previous releases</h2>
-      <p>1.0.0-beta.2, 1.0.0-beta.1, and the 0.8.0 series remain available to approved customers in
-        the portal. Detailed, dated notes for each release are provided there.</p>
+      <p>1.0.0-beta.3, 1.0.0-beta.2, 1.0.0-beta.1, and the 0.8.0 series remain available to approved
+        customers in the portal. Detailed, dated notes for each release are provided there.</p>
       <p class="muted">Engineering details — manifests, checksums, and verification records — are
         available with each release in the portal.</p>
     </div>
