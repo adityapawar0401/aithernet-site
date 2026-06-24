@@ -289,3 +289,9 @@ main.legacy code { font-family: var(--mono); font-size: .86em; background: var(-
 main.legacy pre code { background: none; border: none; padding: 0; }
 ul.tight li { margin: .25em 0; }
 .kbd { font-size: .82rem; color: var(--muted); }
+
+/* ---- account-aware header (cross-surface session) ---- */
+/* While the lightweight portal session check is pending, keep the account action's box but hide its
+   label (no "Sign in"->"Open portal" flash, no layout shift). Without JS the class is never added,
+   so "Sign in" shows immediately (graceful fallback). */
+.acct-pending .acct-action { visibility: hidden; }

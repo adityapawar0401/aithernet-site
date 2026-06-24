@@ -10,6 +10,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
 <meta name="robots" content="noindex">
+  <script>/* reveal the account action even if session.js never loads */document.documentElement.classList.add("acct-pending");setTimeout(function(){document.documentElement.classList.remove("acct-pending")},2500);</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -26,7 +27,7 @@
     <a href="/company.html">Company</a>
   </nav>
   <div class="nav-actions">
-    <a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Sign in</a>
+    <a class="btn ghost sm acct-action" id="acct-action" href="https://app.aithernet.online/#/signin">Sign in</a>
     <a class="btn sm" href="/request-access.html">Get early access</a>
   </div>
 </div></header>
@@ -81,5 +82,6 @@
   });
 })();
 </script>
+  <script src="/assets/session.js" defer></script>
 </body>
 </html>

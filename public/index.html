@@ -19,6 +19,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aithernet","applicationCategory":"DeveloperApplication","operatingSystem":"Ubuntu 24.04 LTS","description":"Agentic infrastructure for secure coordination across software, distributed nodes, GNU Radio workflows, and software-defined radios.","offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability"}}
 </script>
+  <script>/* reveal the account action even if session.js never loads */document.documentElement.classList.add("acct-pending");setTimeout(function(){document.documentElement.classList.remove("acct-pending")},2500);</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -35,7 +36,7 @@
     <a href="/company.html">Company</a>
   </nav>
   <div class="nav-actions">
-    <a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Sign in</a>
+    <a class="btn ghost sm acct-action" id="acct-action" href="https://app.aithernet.online/#/signin">Sign in</a>
     <a class="btn sm" href="/request-access.html">Get early access</a>
   </div>
 </div></header>
@@ -206,5 +207,6 @@
     <span>Early access · invitation-only</span>
   </div>
 </div></footer>
+  <script src="/assets/session.js" defer></script>
 </body>
 </html>
