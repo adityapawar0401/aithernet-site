@@ -3,13 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Unsubscribe — Aithernet</title>
-<meta name="description" content="Unsubscribe from the Aithernet mailing list.">
+<title>Company — Aithernet</title>
+<meta name="description" content="Aithernet builds infrastructure for secure, agent-driven coordination across software and software-defined radio. Invitation-only early access.">
+<link rel="canonical" href="https://www.aithernet.online/company.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aithernet">
+<meta property="og:title" content="Company — Aithernet">
+<meta property="og:description" content="Aithernet builds infrastructure for secure, agent-driven coordination across software and software-defined radio. Invitation-only early access.">
+<meta property="og:url" content="https://www.aithernet.online/company.html">
+<meta property="og:image" content="https://www.aithernet.online/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2347c5">
-<link rel="canonical" href="https://www.aithernet.online/mailing-unsubscribe.html">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
-<meta name="robots" content="noindex">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -30,13 +36,27 @@
     <a class="btn sm" href="/request-access.html">Get early access</a>
   </div>
 </div></header>
-<main id="main" class="legacy">
-  <h1>Unsubscribe</h1>
-  <p class="lede">Remove your address from the Aithernet mailing list.</p>
-  <section class="panel">
-    <button id="unsub" type="button" class="btn">Unsubscribe me</button>
-    <p id="status" class="muted" role="status" aria-live="polite"></p>
-  </section>
+<main id="main">
+<section class="hero"><div class="wrap">
+    <p class="eyebrow">Company</p>
+    <h1>Building infrastructure for agent-driven systems.</h1>
+    <p class="lede">Aithernet is a platform for secure, agent-driven coordination across software and software-defined radio. We are in invitation-only early access and working closely with our first operators.</p>
+    
+  </div></section>
+  <section class="section alt"><div class="wrap"><div class="prose">
+    <h2>What we're building</h2>
+    <p>Aithernet brings together an agent runtime, distributed node infrastructure, and secure IP and
+      SDR transports into one platform. The goal is simple: let operators describe what they want done
+      across their software and radio systems, and have it done — securely, observably, and under
+      their control.</p>
+    <h2>Early access</h2>
+    <p>We are onboarding a small number of teams during early access so we can support each one well.
+      If Aithernet fits your work, <a href="/request-access.html">request access</a> and we'll be in
+      touch.</p>
+    <h2>Contact</h2>
+    <p>General enquiries: <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a><br>
+      Service status: <a href="https://app.aithernet.online/#/status">app.aithernet.online/status</a></p>
+  </div></div></section>
 </main>
 <footer class="site"><div class="wrap">
   <div class="foot-top">
@@ -63,23 +83,5 @@
     <span>Early access &middot; invitation-only</span>
   </div>
 </div></footer>
-<script>
-(function () {
-  var API = "https://app.aithernet.online/api";
-  var token = new URLSearchParams(location.search).get("token") || "";
-  var btn = document.getElementById("unsub");
-  var status = document.getElementById("status");
-  if (!token) { btn.disabled = true; status.textContent = "This unsubscribe link is invalid."; return; }
-  btn.addEventListener("click", function () {
-    btn.disabled = true; status.textContent = "Unsubscribing…";
-    fetch(API + "/v1/mailing-list/unsubscribe", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: token })
-    }).then(function () {
-      status.textContent = "You have been unsubscribed. You will receive no further mailing-list email.";
-    }).catch(function () { status.textContent = "Could not reach the service. Please try again later."; btn.disabled = false; });
-  });
-})();
-</script>
 </body>
 </html>

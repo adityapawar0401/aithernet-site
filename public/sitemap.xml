@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.aithernet.online/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.aithernet.online/product.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.aithernet.online/platform.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.aithernet.online/use-cases.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.aithernet.online/security.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.aithernet.online/rf.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.aithernet.online/docs.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.aithernet.online/install.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.aithernet.online/release-notes.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.aithernet.online/api.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.aithernet.online/supported-systems.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.aithernet.online/hardware.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.aithernet.online/company.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.aithernet.online/request-access.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.aithernet.online/privacy.html</loc><priority>0.4</priority></url>
+  <url><loc>https://www.aithernet.online/rf-notices.html</loc><priority>0.4</priority></url>
+</urlset>

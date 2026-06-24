@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f1626"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#2347c5"/>
+  <text x="80" y="250" font-family="Inter, system-ui, sans-serif" font-size="34" fill="#7f8cb0" font-weight="600" letter-spacing="2">AITHERNET</text>
+  <text x="78" y="345" font-family="Inter, system-ui, sans-serif" font-size="62" fill="#ffffff" font-weight="800" letter-spacing="-1">Agentic infrastructure for</text>
+  <text x="78" y="420" font-family="Inter, system-ui, sans-serif" font-size="62" fill="#ffffff" font-weight="800" letter-spacing="-1">distributed software-defined radio.</text>
+  <text x="80" y="520" font-family="Inter, system-ui, sans-serif" font-size="28" fill="#aeb8d2">Secure, agent-driven coordination across software, nodes, and SDR.</text>
+</svg>

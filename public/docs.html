@@ -4,76 +4,115 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Documentation — Aithernet</title>
-<meta name="description" content="Aithernet public documentation index: supported systems, qualified hardware, installation, the RF MCP component, the public API surface and privacy.">
+<meta name="description" content="Aithernet documentation: getting started, the platform, security, radio and SDR, supported systems, hardware, the public API, and release information.">
+<link rel="canonical" href="https://www.aithernet.online/docs.html">
+<meta property="og:title" content="Documentation — Aithernet">
+<meta property="og:description" content="Getting started, platform, security, radio, systems, hardware, and API documentation.">
+<meta property="og:url" content="https://www.aithernet.online/docs.html">
+<meta property="og:image" content="https://www.aithernet.online/assets/og.svg">
+<meta name="theme-color" content="#2347c5">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="bar">
-  <a class="brand" href="/"><span>Aithernet</span></a>
-  <nav>
-    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
-    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
-    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
-    <a href="/privacy.html">Privacy</a>
+  <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+  <input type="checkbox" id="navtoggle" class="skip" aria-label="Toggle navigation">
+  <label for="navtoggle" class="nav-toggle">Menu</label>
+  <nav aria-label="Primary">
+    <a href="/product.html">Product</a>
+    <a href="/platform.html">Platform</a>
+    <a href="/use-cases.html">Use cases</a>
+    <a href="/security.html">Security</a>
+    <a href="/docs.html">Documentation</a>
+    <a href="/company.html">Company</a>
   </nav>
-  <a class="btn ghost" href="https://app.aithernet.online/#/signin">Sign in</a>
-  <a class="btn" href="/request-access.html">Request early access</a>
+  <div class="nav-actions">
+    <a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Sign in</a>
+    <a class="btn sm" href="/request-access.html">Get early access</a>
+  </div>
 </div></header>
 
-<main>
-  <h1>Documentation</h1>
-  <p class="lede">Public documentation for Aithernet. Detailed, versioned operator guides and the
-    exact commands for your release are delivered inside the authenticated portal after early-access
-    approval — this public site documents the shape of the product, not customer-specific material.</p>
+<main id="main">
+  <section class="hero" style="padding:72px 0 40px"><div class="wrap">
+    <p class="eyebrow">Documentation</p>
+    <h1 style="font-size:2.4rem">Documentation.</h1>
+    <p class="lede">Everything you need to evaluate, install, and operate Aithernet. Customer
+      documentation and release verification are available in the authenticated portal.</p>
+  </div></section>
 
-  <h2>Getting started</h2>
-  <div class="grid">
-    <div class="card"><h3>1 · Supported systems</h3>
-      <p>The qualified baseline is <a href="/supported-systems.html">Ubuntu 24.04 LTS amd64</a> with
-        Python 3.12+ and a distribution GNU Radio 3.10+.</p></div>
-    <div class="card"><h3>2 · Qualified hardware</h3>
-      <p>What has actually been tested versus software-supported on the
-        <a href="/hardware.html">hardware page</a>. ADALM-PLUTO receive is verified; transmit is
-        disabled by default.</p></div>
-    <div class="card"><h3>3 · Install &amp; enroll</h3>
-      <p>The <a href="/install.html">installation guide</a>: verify the signed release, install the
-        Debian package, select a hardware profile, run setup and enroll the node.</p></div>
-    <div class="card"><h3>4 · RF component</h3>
-      <p>The RF backend is a pinned, signed GNU Radio MCP component. See its
-        <a href="/rf-notices.html">provenance &amp; GPL source notice</a>.</p></div>
-  </div>
+  <section class="section" style="padding-top:24px"><div class="wrap">
+    <p class="eyebrow">Getting started</p>
+    <div class="doc-grid">
+      <a class="doc-card" href="/install.html"><h3>Installation</h3><p>Requirements, download,
+        verification, install, and setup.</p></a>
+      <a class="doc-card" href="/supported-systems.html"><h3>Supported systems</h3><p>The Ubuntu
+        24.04 LTS baseline and platform notes.</p></a>
+      <a class="doc-card" href="/hardware.html"><h3>Hardware</h3><p>Software-defined radio support and
+        hardware guidance.</p></a>
+    </div>
+  </div></section>
 
-  <h2>Reference</h2>
-  <ul class="tight">
-    <li><a href="/supported-systems.html">Supported systems &amp; runtime requirements</a></li>
-    <li><a href="/hardware.html">Qualified hardware &amp; installation profiles</a></li>
-    <li><a href="/install.html">Installation, verification, enrollment</a></li>
-    <li><a href="/api.html">Public API overview</a> — node-local, authenticated interfaces</li>
-    <li><a href="/rf-notices.html">RF component &amp; corresponding-source notices</a></li>
-    <li><a href="/privacy.html">Privacy &amp; credential/data handling</a></li>
-    <li><a href="/release-notes.html">Release notes &amp; channel status</a></li>
-  </ul>
+  <section class="section alt"><div class="wrap">
+    <p class="eyebrow">Platform &amp; security</p>
+    <div class="doc-grid">
+      <a class="doc-card" href="/product.html"><h3>Product</h3><p>Missions, agents, nodes,
+        transports, and observability.</p></a>
+      <a class="doc-card" href="/platform.html"><h3>Platform architecture</h3><p>The layers, from
+        orchestration to transports.</p></a>
+      <a class="doc-card" href="/security.html"><h3>Security</h3><p>Identities, meshes, isolation,
+        and operator control.</p></a>
+      <a class="doc-card" href="/rf.html"><h3>Radio &amp; SDR</h3><p>Simulated and physical
+        transports, profiles, and link semantics.</p></a>
+    </div>
+  </div></section>
 
-  <h2>Operating model</h2>
-  <p>Aithernet separates a <strong>deterministic layer</strong> (identity, persistence, signatures,
-    service lifecycle, releases, hardware access, enrollment, audit and consent) from a
-    <strong>reasoning layer</strong> (optional coordinator and coding agents). The reasoning layer
-    never replaces deterministic authorization, lifecycle or safety controls. A node makes only
-    outbound connections to the hosted control plane and never exposes its local API to the Internet.</p>
+  <section class="section"><div class="wrap">
+    <p class="eyebrow">Reference</p>
+    <div class="doc-grid">
+      <a class="doc-card" href="/api.html"><h3>Public API</h3><p>External-agent tokens, missions,
+        events, and tools.</p></a>
+      <a class="doc-card" href="/release-notes.html"><h3>Release notes</h3><p>What's new, compatibility,
+        and upgrade guidance.</p></a>
+      <a class="doc-card" href="/rf-notices.html"><h3>RF component &amp; source notices</h3><p>GPL
+        corresponding source for the RF component.</p></a>
+      <a class="doc-card" href="/privacy.html"><h3>Privacy &amp; legal</h3><p>Data handling, consent,
+        and legal information.</p></a>
+    </div>
+  </div></section>
 
-  <div class="note">This site hosts no binaries, keys or credentials. Signed packages, verification
-    keys and the per-release command reference are delivered through the authenticated portal at
-    <code>app.aithernet.online</code> after access is granted.</div>
-
-  <p class="muted">Early access is invitation-only. Documentation here describes the supported
-    product surface and does not imply general availability.</p>
+  <section class="section alt"><div class="wrap">
+    <div class="callout">Detailed customer documentation — enrollment, mesh authorization, link-layer
+      behavior, provider setup, troubleshooting, and release verification — is available to approved
+      customers in the <a href="https://app.aithernet.online/#/signin">authenticated portal</a>.</div>
+  </div></section>
 </main>
 
-<footer class="site"><div class="bar">
-  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
-    <a href="/request-access.html">Request access</a> ·
-    <a href="https://app.aithernet.online/#/status">Service status</a> ·
-    contact <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a></p>
+<footer class="site"><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+      <p>Agentic infrastructure for distributed software-defined radio.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col"><h4>Product</h4>
+        <a href="/product.html">Product</a><a href="/platform.html">Platform</a>
+        <a href="/use-cases.html">Use cases</a><a href="/security.html">Security</a></div>
+      <div class="foot-col"><h4>Documentation</h4>
+        <a href="/docs.html">Documentation</a><a href="/install.html">Installation</a>
+        <a href="/release-notes.html">Release notes</a><a href="/api.html">API</a></div>
+      <div class="foot-col"><h4>Company</h4>
+        <a href="/company.html">Company</a><a href="/request-access.html">Request access</a>
+        <a href="https://app.aithernet.online/#/status">Status</a><a href="/privacy.html">Privacy</a></div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Aithernet</span><span>&middot;</span>
+    <a href="/privacy.html">Privacy &amp; legal</a><span>&middot;</span>
+    <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a><span>&middot;</span>
+    <span>Early access &middot; invitation-only</span>
+  </div>
 </div></footer>
 </body>
 </html>

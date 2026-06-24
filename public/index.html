@@ -3,84 +3,208 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Aithernet — autonomous SDR node runtime</title>
-<meta name="description" content="Aithernet is an autonomous software-defined-radio node runtime with a hosted control plane, a GNU Radio MCP backend, and a privacy-first telemetry model. Early access is invitation-only.">
+<title>Aithernet — Agentic infrastructure for distributed software-defined radio</title>
+<meta name="description" content="Aithernet enables secure, agent-driven coordination across software, distributed nodes, GNU Radio workflows, and software-defined radios. Plan, build, operate, and coordinate from local and remote nodes.">
+<link rel="canonical" href="https://www.aithernet.online/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aithernet">
+<meta property="og:title" content="Aithernet — Agentic infrastructure for distributed SDR">
+<meta property="og:description" content="Secure, agent-driven coordination across software, distributed nodes, GNU Radio workflows, and software-defined radios.">
+<meta property="og:url" content="https://www.aithernet.online/">
+<meta property="og:image" content="https://www.aithernet.online/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2347c5">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Aithernet","applicationCategory":"DeveloperApplication","operatingSystem":"Ubuntu 24.04 LTS","description":"Agentic infrastructure for secure coordination across software, distributed nodes, GNU Radio workflows, and software-defined radios.","offers":{"@type":"Offer","availability":"https://schema.org/LimitedAvailability"}}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="bar">
-  <a class="brand" href="/"><span>Aithernet</span></a>
-  <nav>
-    <a href="/docs.html">Docs</a>
-    <a href="/supported-systems.html">Systems</a>
-    <a href="/hardware.html">Hardware</a>
-    <a href="/install.html">Install</a>
-    <a href="/api.html">API</a>
-    <a href="/release-notes.html">Releases</a>
-    <a href="/privacy.html">Privacy</a>
+  <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+  <input type="checkbox" id="navtoggle" class="skip" aria-label="Toggle navigation">
+  <label for="navtoggle" class="nav-toggle">Menu</label>
+  <nav aria-label="Primary">
+    <a href="/product.html">Product</a>
+    <a href="/platform.html">Platform</a>
+    <a href="/use-cases.html">Use cases</a>
+    <a href="/security.html">Security</a>
+    <a href="/docs.html">Documentation</a>
+    <a href="/company.html">Company</a>
   </nav>
-  <a class="btn ghost" href="https://app.aithernet.online/#/status">Status</a>
-  <a class="btn ghost" href="https://app.aithernet.online/#/signin">Sign in</a>
-  <a class="btn" href="/request-access.html">Request early access</a>
+  <div class="nav-actions">
+    <a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Sign in</a>
+    <a class="btn sm" href="/request-access.html">Get early access</a>
+  </div>
 </div></header>
 
-<main>
-  <section class="hero">
-    <span class="pill warn">Early access · invitation-only</span>
-    <h1>An autonomous SDR node runtime, operated as a product.</h1>
-    <p class="lede">Aithernet runs a software-defined-radio node with a GNU Radio MCP backend,
-      a coordinator/coding-agent layer with deterministic budgets and approvals, and a hosted
-      control plane for enrollment, fleet health and signed releases — with privacy-first,
-      consent-gated telemetry.</p>
-    <p>
-      <a class="btn" href="/request-access.html">Request early access</a>
-      &nbsp;<a class="btn ghost" href="https://app.aithernet.online/#/signin">Sign in to download</a>
-      &nbsp;<a class="btn ghost" href="/install.html">Read the install guide</a>
-    </p>
-    <p class="muted">Public access is gated by an approved, one-time invitation. The marketing
-      site hosts no downloads, credentials or customer data — signed packages are delivered through
-      the authenticated portal after access is granted.</p>
-  </section>
+<main id="main">
+  <!-- Hero -->
+  <section class="hero"><div class="wrap">
+    <span class="tag"><span class="dot"></span> Early access · invitation-only</span>
+    <h1>Agentic infrastructure for distributed software-defined radio.</h1>
+    <p class="lede">Plan, build, operate, and coordinate software and SDR systems across local and
+      remote Aithernet nodes — with secure communication, fleet management, and an agent runtime
+      that does the work.</p>
+    <div class="cta">
+      <a class="btn lg" href="/request-access.html">Get early access</a>
+      <a class="btn ghost lg" href="/docs.html">Read the documentation</a>
+    </div>
+    <p class="note-line">Signed packages are delivered through the authenticated portal once access
+      is granted.</p>
+  </div></section>
 
-  <h2>What it is</h2>
-  <div class="grid">
-    <div class="card"><h3>SDR node runtime</h3>
-      <p>A local node that drives an SDR through a pinned, signed GNU Radio MCP component over
-        stdio. Receive-first; transmission is disabled by default.</p></div>
-    <div class="card"><h3>Hosted control plane</h3>
-      <p>Outbound-only nodes enroll to a hosted control plane for identity, fleet health,
-        heartbeats and signed release distribution. The node's local API is never exposed to
-        the Internet.</p></div>
-    <div class="card"><h3>Agent layer</h3>
-      <p>Optional coordinator (Gemini API / OpenAI-compatible / local endpoint) and coding agent,
-        each in an isolated workspace with deterministic budgets and explicit approvals. Never
-        exposed to anonymous users.</p></div>
-    <div class="card"><h3>Privacy-first telemetry</h3>
-      <p>Telemetry is consent-gated and data-minimized. See the
-        <a href="/privacy.html">privacy &amp; legal</a> page.</p></div>
-  </div>
+  <!-- Overview -->
+  <section class="section alt"><div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Overview</p>
+      <h2>One platform for software and radio systems.</h2>
+      <p class="lede">Aithernet enables secure, agent-driven coordination across software,
+        distributed nodes, GNU Radio workflows, and software-defined radios. Operators define what
+        they want done; the platform plans, executes, and reports — under explicit local control.</p>
+    </div>
+  </div></section>
 
-  <h2>Start here</h2>
-  <ul class="tight">
-    <li><a href="/supported-systems.html">Supported systems</a> — Ubuntu 24.04 LTS amd64 baseline.</li>
-    <li><a href="/hardware.html">Qualified hardware</a> — what has actually been tested.</li>
-    <li><a href="/install.html">Installation</a> — request access, then install the signed package.</li>
-    <li><a href="/api.html">Public API</a> — scoped external-agent tokens, missions, events, MCP.</li>
-    <li><a href="/rf-notices.html">RF component &amp; source notices</a> — GPL corresponding source.</li>
-    <li><a href="/release-notes.html">Release notes</a> · <a href="/privacy.html">Privacy &amp; legal</a></li>
-  </ul>
+  <!-- Capabilities -->
+  <section class="section"><div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Platform capabilities</p>
+      <h2>Built for serious operators.</h2>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <h3><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 8l9-5 9 5"/></svg></span> Agentic mission execution</h3>
+        <p>Describe an objective in plain language. A coordinator plans the work and drives it to
+          completion with explicit budgets and approvals.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6 3 12l5 6M16 6l5 6-5 6"/></svg></span> Coding &amp; GNU Radio workflows</h3>
+        <p>Generate and run code and signal-processing flowgraphs in isolated workspaces through the
+          managed GNU Radio runtime.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.7 7.7 11 15m6-7.3L13 15"/></svg></span> Distributed node coordination</h3>
+        <p>Run a single node or a fleet. Nodes coordinate over secure transports while each keeps
+          authority over its own work.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 4 3 7 8 9 5-2 8-5 8-9V6z"/></svg></span> Secure IP and SDR communications</h3>
+        <p>Authenticated, encrypted peer messages over IP and software-defined radio, bound to
+          explicit mesh membership.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="5" rx="1"/><rect x="3" y="15" width="18" height="5" rx="1"/><path d="M7 9v6"/></svg></span> Fleet and mesh management</h3>
+        <p>Enroll nodes, organize them into meshes, and manage trust and membership from one
+          console — hosted or fully standalone.</p>
+      </div>
+      <div class="feature">
+        <h3><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 16l4-5 3 3 4-6"/></svg></span> Research and dataset infrastructure</h3>
+        <p>Capture structured operational records, with consent, and turn them into reproducible
+          datasets for analysis and model development.</p>
+      </div>
+    </div>
+  </div></section>
 
-  <div class="note">Aithernet is in an invitation-only early-access beta. It is not yet a general
-    availability product. Nothing on this site grants self-service registration.</div>
+  <!-- Deployment -->
+  <section class="section alt"><div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Deployment &amp; infrastructure</p>
+      <h2>Hosted fleet or fully standalone.</h2>
+      <p class="lede">Run Aithernet connected to a hosted control plane for account ownership,
+        remote fleet visibility and synchronized meshes — or entirely offline, with no account,
+        cloud, or internet dependency.</p>
+    </div>
+    <div class="features">
+      <div class="feature"><h3>Outbound-only nodes</h3><p>Nodes make outbound connections to the
+        control plane. They open no inbound ports and never expose a local API to the internet.</p></div>
+      <div class="feature"><h3>Generic, signed packages</h3><p>Every customer installs the same
+        signed package. A one-time enrollment code binds a node to its account at install time.</p></div>
+      <div class="feature"><h3>Standalone parity</h3><p>Identity, meshes, agents, transports and
+        datasets all work offline. Hosting adds fleet visibility — it never gates core features.</p></div>
+    </div>
+  </div></section>
+
+  <!-- Security -->
+  <section class="section"><div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Security &amp; control</p>
+      <h2>Trust is explicit, by design.</h2>
+      <p class="lede">Every node has a cryptographic identity. Communication is authorized by
+        explicit mesh membership, not mere reachability. Operators retain local control over
+        hardware and operating parameters at all times.</p>
+    </div>
+    <div class="features">
+      <div class="feature"><h3>Cryptographic identities</h3><p>Each node holds its own keypair and
+        authenticates by signing — there is no shared secret to distribute.</p></div>
+      <div class="feature"><h3>Tenant-isolated meshes</h3><p>Messages are authorized by mesh
+        membership. Cross-tenant communication requires an explicit, shared relationship.</p></div>
+      <div class="feature"><h3>Local operator control</h3><p>Physical transmission and operating
+        parameters are selected by the local operator on supported hardware.</p></div>
+    </div>
+    <p style="margin-top:32px"><a class="btn ghost" href="/security.html">Explore security →</a></p>
+  </div></section>
+
+  <!-- Use cases -->
+  <section class="section alt"><div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Use cases</p>
+      <h2>Where teams use Aithernet.</h2>
+    </div>
+    <div class="uselist">
+      <div class="item"><h3>Distributed RF experimentation</h3><p>Coordinate experiments across
+        multiple radios and sites from one place.</p></div>
+      <div class="item"><h3>Autonomous signal-processing workflows</h3><p>Let agents build and run
+        GNU Radio flowgraphs end to end.</p></div>
+      <div class="item"><h3>Secure node-to-node coordination</h3><p>Exchange authenticated messages
+        and missions across trusted nodes.</p></div>
+      <div class="item"><h3>SDR application development</h3><p>Develop, test, and iterate on radio
+        applications with an agent runtime.</p></div>
+      <div class="item"><h3>Remote fleet operations</h3><p>Enroll, monitor, and manage distributed
+        nodes from a single console.</p></div>
+      <div class="item"><h3>Communications research</h3><p>Capture reproducible datasets from real
+        and simulated operations.</p></div>
+    </div>
+    <p style="margin-top:28px"><a class="btn ghost" href="/use-cases.html">See use cases →</a></p>
+  </div></section>
+
+  <!-- CTA -->
+  <section class="section cta-band"><div class="wrap center">
+    <h2>Request early access.</h2>
+    <p class="lede" style="margin:0 auto 28px">Aithernet is in invitation-only early access. Tell us
+      about your work and we'll be in touch.</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn lg" href="/request-access.html">Get early access</a>
+      <a class="btn ghost lg" href="/product.html">Explore the product</a>
+    </div>
+  </div></section>
 </main>
 
-<footer class="site"><div class="bar">
-  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
-    <a href="/request-access.html">Request access</a> ·
-    <a href="https://app.aithernet.online/#/status">Service status</a> ·
-    contact <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a></p>
-  <p class="muted">This is the public static site (www.aithernet.online). The customer portal and
-    control plane run separately at app.aithernet.online.</p>
+<footer class="site"><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+      <p>Agentic infrastructure for distributed software-defined radio.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col"><h4>Product</h4>
+        <a href="/product.html">Product</a><a href="/platform.html">Platform</a>
+        <a href="/use-cases.html">Use cases</a><a href="/security.html">Security</a></div>
+      <div class="foot-col"><h4>Documentation</h4>
+        <a href="/docs.html">Documentation</a><a href="/install.html">Installation</a>
+        <a href="/release-notes.html">Release notes</a><a href="/api.html">API</a></div>
+      <div class="foot-col"><h4>Company</h4>
+        <a href="/company.html">Company</a><a href="/request-access.html">Request access</a>
+        <a href="https://app.aithernet.online/#/status">Status</a><a href="/privacy.html">Privacy</a></div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Aithernet</span><span>·</span>
+    <a href="/privacy.html">Privacy &amp; legal</a><span>·</span>
+    <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a><span>·</span>
+    <span>Early access · invitation-only</span>
+  </div>
 </div></footer>
 </body>
 </html>

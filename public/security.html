@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Security — Aithernet</title>
+<meta name="description" content="How Aithernet secures distributed operations: cryptographic node identities, explicit mesh membership, authenticated peer messages, tenant isolation, replay protection, and local control.">
+<link rel="canonical" href="https://www.aithernet.online/security.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Aithernet">
+<meta property="og:title" content="Security — Aithernet">
+<meta property="og:description" content="How Aithernet secures distributed operations: cryptographic node identities, explicit mesh membership, authenticated peer messages, tenant isolation, replay protection, and local control.">
+<meta property="og:url" content="https://www.aithernet.online/security.html">
+<meta property="og:image" content="https://www.aithernet.online/assets/og.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2347c5">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="bar">
+  <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+  <input type="checkbox" id="navtoggle" class="skip" aria-label="Toggle navigation">
+  <label for="navtoggle" class="nav-toggle">Menu</label>
+  <nav aria-label="Primary">
+    <a href="/product.html">Product</a>
+    <a href="/platform.html">Platform</a>
+    <a href="/use-cases.html">Use cases</a>
+    <a href="/security.html">Security</a>
+    <a href="/docs.html">Documentation</a>
+    <a href="/company.html">Company</a>
+  </nav>
+  <div class="nav-actions">
+    <a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Sign in</a>
+    <a class="btn sm" href="/request-access.html">Get early access</a>
+  </div>
+</div></header>
+<main id="main">
+<section class="hero"><div class="wrap">
+    <p class="eyebrow">Security</p>
+    <h1>Trust is explicit, not assumed.</h1>
+    <p class="lede">Every node has a cryptographic identity, every message is authenticated, and communication is authorized by explicit mesh membership. Operators keep local control at all times.</p>
+    
+  </div></section>
+  <section class="section alt"><div class="wrap">
+    <div class="features">
+      <div class="feature"><h3>Cryptographic node identities</h3><p>Each node holds its own keypair
+        and authenticates by signing. There is no shared secret to distribute or leak.</p></div>
+      <div class="feature"><h3>Explicit mesh membership</h3><p>A mesh is the trust group that
+        authorizes communication. Reachability alone grants nothing.</p></div>
+      <div class="feature"><h3>Authenticated peer messages</h3><p>Every message is signed and bound
+        to its sender, recipient, and mesh before it is accepted.</p></div>
+      <div class="feature"><h3>Tenant isolation</h3><p>Nodes in different tenants cannot communicate
+        unless an explicit shared relationship exists.</p></div>
+      <div class="feature"><h3>Replay protection</h3><p>Messages carry nonces and sequencing, so
+        captured traffic cannot be replayed.</p></div>
+      <div class="feature"><h3>Local operator control</h3><p>Hardware and operating parameters are
+        chosen locally. Nothing transmits without explicit local configuration.</p></div>
+      <div class="feature"><h3>Bounded execution</h3><p>Agent and tool execution runs within
+        configured limits and approvals.</p></div>
+      <div class="feature"><h3>Signed releases &amp; artifact integrity</h3><p>Packages are signed and
+        verifiable; outputs are captured as integrity-checked artifacts.</p></div>
+      <div class="feature"><h3>Careful secret handling</h3><p>Credentials stay local to the operator
+        and are never embedded in packages or transmitted over the peer protocol.</p></div>
+    </div>
+    <p style="margin-top:32px"><a class="btn ghost" href="/docs.html">Read the security documentation &rarr;</a></p>
+  </div></section>
+</main>
+<footer class="site"><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+      <p>Agentic infrastructure for distributed software-defined radio.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col"><h4>Product</h4>
+        <a href="/product.html">Product</a><a href="/platform.html">Platform</a>
+        <a href="/use-cases.html">Use cases</a><a href="/security.html">Security</a></div>
+      <div class="foot-col"><h4>Documentation</h4>
+        <a href="/docs.html">Documentation</a><a href="/install.html">Installation</a>
+        <a href="/release-notes.html">Release notes</a><a href="/api.html">API</a></div>
+      <div class="foot-col"><h4>Company</h4>
+        <a href="/company.html">Company</a><a href="/request-access.html">Request access</a>
+        <a href="https://app.aithernet.online/#/status">Status</a><a href="/privacy.html">Privacy</a></div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Aithernet</span><span>&middot;</span>
+    <a href="/privacy.html">Privacy &amp; legal</a><span>&middot;</span>
+    <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a><span>&middot;</span>
+    <span>Early access &middot; invitation-only</span>
+  </div>
+</div></footer>
+</body>
+</html>

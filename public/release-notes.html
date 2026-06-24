@@ -4,118 +4,129 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Release notes — Aithernet</title>
-<meta name="description" content="Aithernet release channel status. Early access is invitation-only; signed releases are delivered through the authenticated portal. No public download is offered on this site.">
+<meta name="description" content="Aithernet release notes. The current early-access release is 1.0.0-beta.3, adding account-bound fleets, tenant-isolated meshes, and a complete OTA link protocol.">
+<link rel="canonical" href="https://www.aithernet.online/release-notes.html">
+<meta property="og:title" content="Release notes — Aithernet">
+<meta property="og:description" content="What's new in Aithernet 1.0.0-beta.3.">
+<meta property="og:url" content="https://www.aithernet.online/release-notes.html">
+<meta property="og:image" content="https://www.aithernet.online/assets/og.svg">
+<meta name="theme-color" content="#2347c5">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="bar">
-  <a class="brand" href="/"><span>Aithernet</span></a>
-  <nav>
-    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
-    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
-    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
-    <a href="/privacy.html">Privacy</a>
+  <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+  <input type="checkbox" id="navtoggle" class="skip" aria-label="Toggle navigation">
+  <label for="navtoggle" class="nav-toggle">Menu</label>
+  <nav aria-label="Primary">
+    <a href="/product.html">Product</a>
+    <a href="/platform.html">Platform</a>
+    <a href="/use-cases.html">Use cases</a>
+    <a href="/security.html">Security</a>
+    <a href="/docs.html">Documentation</a>
+    <a href="/company.html">Company</a>
   </nav>
-  <a class="btn ghost" href="https://app.aithernet.online/#/signin">Sign in</a>
-  <a class="btn" href="/request-access.html">Request early access</a>
+  <div class="nav-actions">
+    <a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Sign in</a>
+    <a class="btn sm" href="/request-access.html">Get early access</a>
+  </div>
 </div></header>
 
-<main>
-  <h1>Release notes</h1>
-  <p class="lede">Aithernet is in invitation-only early access. Signed releases are delivered through
-    the authenticated portal to approved customers. <strong>No public download is offered on this
-    site, and there is no public general-availability release yet.</strong></p>
+<main id="main">
+  <section class="hero" style="padding:72px 0 36px"><div class="wrap">
+    <p class="eyebrow">Release notes</p>
+    <h1 style="font-size:2.4rem">What's new in Aithernet.</h1>
+    <p class="lede">Releases are delivered to approved customers through the authenticated portal,
+      where you'll also find the verification key and exact install commands for your release.</p>
+  </div></section>
 
-  <div class="note">This site hosts no binaries, checksums, signatures or keys. When you are
-    approved, your release — Debian package, wheel/sdist, signed manifest, checksums and the
-    verification key — appears on the portal's Downloads page with the exact, versioned commands.</div>
+  <section class="section" style="padding-top:24px"><div class="wrap">
+    <div class="prose" style="max-width:760px">
+      <p><span class="tag"><span class="dot"></span> Current release</span></p>
+      <h2 style="margin-top:14px">1.0.0-beta.3</h2>
+      <p class="muted" style="margin-top:-6px">Early access &middot; current</p>
 
-  <h2>Channel</h2>
-  <table>
-    <tr><th>Channel</th><th>Audience</th><th>Status</th></tr>
-    <tr><td>early-access</td><td>Invited, approved customers</td>
-        <td><span class="pill warn">Invitation-only</span></td></tr>
-    <tr><td>general availability</td><td>Public</td>
-        <td><span class="pill off">Not yet released</span></td></tr>
-  </table>
+      <h3>Highlights</h3>
+      <ul>
+        <li><strong>Account-bound fleets.</strong> Enroll nodes to your account and see them appear
+          automatically, with clear online, stale, offline, and degraded status.</li>
+        <li><strong>Tenant-isolated meshes.</strong> Organize nodes into meshes that explicitly
+          authorize communication. Nodes outside a shared mesh cannot talk to each other.</li>
+        <li><strong>Complete over-the-air link protocol.</strong> Robust SDR communication with
+          channel reservation, acknowledgement, retransmission, and delivery semantics.</li>
+      </ul>
 
-  <h2>How releases work</h2>
-  <ul class="tight">
-    <li>Each release is an immutable, signed bundle: a detached signature over a manifest, per-artifact
-      SHA-256 checksums, and an explicit signing key identifier.</li>
-    <li>Customers <a href="/install.html">verify the signature and checksums</a> with the published
-      verification key before installing.</li>
-    <li>The RF MCP component ships its <a href="/rf-notices.html">GPL corresponding source</a>
-      alongside the binary release.</li>
-    <li>A superseded qualification release is only revoked after its replacement has passed.</li>
-  </ul>
+      <h3>New capabilities</h3>
+      <ul>
+        <li>First-class mesh management in the portal and CLI — create meshes, add and remove nodes,
+          and manage membership.</li>
+        <li>Node management: rename nodes, manage enrollment codes, and review mesh membership from
+          the portal.</li>
+        <li>Fleet status with online, stale, offline, degraded, never-seen, and revoked states.</li>
+        <li>Standalone meshes that work fully offline, with no hosted account required.</li>
+        <li>Structured operational records and datasets for mesh, fleet, and link-layer activity.</li>
+      </ul>
 
-  <h2>What is being qualified</h2>
-  <p>The current early-access build (1.0.0-beta.3) adds the <strong>account-bound fleet</strong>,
-    <strong>tenant-isolated secure meshes</strong>, and the <strong>complete OTA link protocol</strong>
-    on top of the operator-controlled SDR peer transport. It has <strong>completed and passed</strong>
-    the following software qualification, automatically, on a clean source-hidden install:</p>
-  <ul class="tight">
-    <li>production-signed release publication and authenticated customer download verification;</li>
-    <li>source-hidden <code>.deb</code> installation on clean Ubuntu&nbsp;24.04 amd64 as a normal user;</li>
-    <li><strong>hosted enrollment + fleet</strong>: one-time tenant-scoped codes (digest-only,
-      revocable, atomically consumed), signed heartbeats with online/stale/offline/degraded/
-      never_seen/revoked states, node rename, and strict tenant isolation;</li>
-    <li><strong>tenant-isolated meshes</strong>: a peer message is authorized by explicit mesh
-      membership, not mere key trust or reachability; cross-tenant traffic is rejected before
-      MissionEngine ingress unless an explicit shared mesh exists; revocation takes effect
-      immediately; standalone meshes work fully offline;</li>
-    <li>the <strong>complete OTA MAC / link protocol</strong> (deterministic, no radiation): RTS/CTS
-      reservation, carrier sense, randomized backoff, hidden-node mitigation, three-node contention
-      with fairness/no-starvation, two-node TDD, BLOCK_ACK-bitmap selective retransmission, and the
-      frame set BEACON/RTS/CTS/DATA/BLOCK_ACK/NACK/CANCEL/FIN/DELIVERY_RECEIPT;</li>
-    <li>the <strong>four acknowledgement layers</strong> — link ACK, delivery receipt, mission
-      acknowledgement, mission result — kept distinct (a radio frame ACK is never reported as
-      mission success);</li>
-    <li><strong>operator-controlled physical TX</strong> (unchanged from beta.2): available once the
-      local operator enables it with a TX-capable device, gated only by technical-correctness
-      controls, with <strong>no vendor/cloud authorization</strong>;</li>
-    <li>RF research records (mesh-authorization, channel-access, RTS/CTS outcomes, collision
-      recovery, retransmission, delivery latency, fleet health, cross-tenant rejection) with
-      pseudonymized tenant/mesh/node ids and secret-scanning, and leakage-free mission-grouped
-      dataset snapshots;</li>
-    <li>documentation command-regression testing against the packaged CLI.</li>
-  </ul>
-  <div class="note"><strong>Physical SDR transmission is available under local operator control.</strong>
-    The operator enables it, selects all physical parameters, and is responsible for operating the
-    radio per the rules at the operating location; Aithernet never chooses a frequency. Automated
-    qualification uses hardware mocks + GNU Radio loopback and <strong>does not radiate</strong>;
-    cabled, shielded and authorized-OTA tests are run by the operator on their hardware after
-    installation. The optional live external-coordinator&nbsp;→&nbsp;coding-agent&nbsp;→&nbsp;generated-modem
-    test uses the operator's own coordinator credential.</div>
-  <p>Genuine limitations that are <strong>not</strong> claimed:</p>
-  <ul class="tight">
-    <li>invitation-only early access; physical TX is operator-controlled and OFF by default — the
-      operator enables and configures it locally on TX-capable hardware;</li>
-    <li>no physical over-the-air transmission was performed during release qualification (automated
-      tests use mocks + loopback and do not radiate); cabled/shielded/OTA testing is operator-run;</li>
-    <li>WSL is software-only and its audio endpoints are not SDR hardware;</li>
-    <li>physical Pluto / USB-SDR transmission was not tested on hardware here (operator-run);</li>
-    <li>real Gemini / Codex external-provider missions remain optional live canaries rather than
-      mandatory deterministic release qualification;</li>
-    <li>full reboot / disconnect-reconnect, multi-node over-the-air, and long-duration soak
-      validation are not claimed;</li>
-    <li>owner research collection is opt-in and owner-operated — not enabled for external customers
-      by default;</li>
-    <li>Aithernet does <strong>not</strong> claim access to any model's hidden chain-of-thought; it
-      records only provider-exposed reasoning and structured decision explanations, and never
-      collects or uploads secrets.</li>
-  </ul>
+      <h3>Improvements</h3>
+      <ul>
+        <li>Clearer separation between message delivery and mission outcomes across the product.</li>
+        <li>Simpler, more consistent node and mesh presentation in the portal.</li>
+      </ul>
 
-  <p class="muted">Detailed, dated release notes for each early-access build are provided in the
-    portal. This public page intentionally omits version-specific download details.</p>
+      <h3>Compatibility</h3>
+      <ul>
+        <li>Ubuntu 24.04 LTS (amd64).</li>
+        <li>Earlier releases remain available and unchanged.</li>
+      </ul>
+
+      <h3>Known limitations</h3>
+      <ul>
+        <li>Early access is invitation-only.</li>
+        <li>Physical transmission is operator-controlled and configured locally on supported
+          hardware.</li>
+      </ul>
+
+      <h3>Upgrade</h3>
+      <p>Download the new package from the portal, verify it, and install it over your existing
+        node. Setup and enrollment are preserved.</p>
+      <pre><code>sudo apt install ./aithernet_1.0.0~beta.3_amd64.deb</code></pre>
+
+      <hr style="border:none;border-top:1px solid var(--line);margin:40px 0">
+      <h2>Previous releases</h2>
+      <p>1.0.0-beta.2, 1.0.0-beta.1, and the 0.8.0 series remain available to approved customers in
+        the portal. Detailed, dated notes for each release are provided there.</p>
+      <p class="muted">Engineering details — manifests, checksums, and verification records — are
+        available with each release in the portal.</p>
+    </div>
+  </div></section>
 </main>
 
-<footer class="site"><div class="bar">
-  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
-    <a href="/request-access.html">Request access</a> ·
-    <a href="https://app.aithernet.online/#/status">Service status</a> ·
-    contact <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a></p>
+<footer class="site"><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+      <p>Agentic infrastructure for distributed software-defined radio.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col"><h4>Product</h4>
+        <a href="/product.html">Product</a><a href="/platform.html">Platform</a>
+        <a href="/use-cases.html">Use cases</a><a href="/security.html">Security</a></div>
+      <div class="foot-col"><h4>Documentation</h4>
+        <a href="/docs.html">Documentation</a><a href="/install.html">Installation</a>
+        <a href="/release-notes.html">Release notes</a><a href="/api.html">API</a></div>
+      <div class="foot-col"><h4>Company</h4>
+        <a href="/company.html">Company</a><a href="/request-access.html">Request access</a>
+        <a href="https://app.aithernet.online/#/status">Status</a><a href="/privacy.html">Privacy</a></div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Aithernet</span><span>&middot;</span>
+    <a href="/privacy.html">Privacy &amp; legal</a><span>&middot;</span>
+    <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a><span>&middot;</span>
+    <span>Early access &middot; invitation-only</span>
+  </div>
 </div></footer>
 </body>
 </html>

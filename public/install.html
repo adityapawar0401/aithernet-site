@@ -4,202 +4,116 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Installation — Aithernet</title>
-<meta name="description" content="How to install an Aithernet node on Ubuntu 24.04 LTS amd64 after early-access approval.">
+<meta name="description" content="Install Aithernet on Ubuntu 24.04. Download your signed package from the authenticated portal, verify it, install, and run setup.">
+<link rel="canonical" href="https://www.aithernet.online/install.html">
+<meta property="og:title" content="Installation — Aithernet">
+<meta property="og:description" content="Install Aithernet on Ubuntu 24.04 in a few steps.">
+<meta property="og:url" content="https://www.aithernet.online/install.html">
+<meta property="og:image" content="https://www.aithernet.online/assets/og.svg">
+<meta name="theme-color" content="#2347c5">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="bar">
-  <a class="brand" href="/"><span>Aithernet</span></a>
-  <nav>
-    <a href="/docs.html">Docs</a><a href="/supported-systems.html">Systems</a>
-    <a href="/hardware.html">Hardware</a><a href="/install.html">Install</a>
-    <a href="/api.html">API</a><a href="/release-notes.html">Releases</a>
-    <a href="/privacy.html">Privacy</a>
+  <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+  <input type="checkbox" id="navtoggle" class="skip" aria-label="Toggle navigation">
+  <label for="navtoggle" class="nav-toggle">Menu</label>
+  <nav aria-label="Primary">
+    <a href="/product.html">Product</a>
+    <a href="/platform.html">Platform</a>
+    <a href="/use-cases.html">Use cases</a>
+    <a href="/security.html">Security</a>
+    <a href="/docs.html">Documentation</a>
+    <a href="/company.html">Company</a>
   </nav>
-  <a class="btn ghost" href="https://app.aithernet.online/#/signin">Sign in</a>
-  <a class="btn" href="/request-access.html">Request early access</a>
+  <div class="nav-actions">
+    <a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Sign in</a>
+    <a class="btn sm" href="/request-access.html">Get early access</a>
+  </div>
 </div></header>
 
-<main>
-  <h1>Installation</h1>
-  <p class="lede">Aithernet is invitation-only. Packages are delivered through the authenticated
-    portal after your access request is approved — this public site hosts no binaries, keys or
-    credentials.</p>
+<main id="main">
+  <section class="hero" style="padding:72px 0 40px"><div class="wrap">
+    <p class="eyebrow">Installation</p>
+    <h1 style="font-size:2.4rem">Install Aithernet.</h1>
+    <p class="lede">Get a node running on Ubuntu in a few steps. Packages are delivered through the
+      authenticated portal once your access is approved.</p>
+  </div></section>
 
-  <h2>The customer sequence</h2>
-  <ol>
-    <li><strong>Request early access</strong> with the
-      <a href="/request-access.html">early-access request form</a>.</li>
-    <li><strong>Get your invitation</strong> — an early-access invitation email is sent to the
-      address you submit (during controlled early access this may be reviewed first).</li>
-    <li><strong>Create your account</strong> from the invitation link and sign in to the portal.</li>
-    <li><strong>Download</strong> the signed release (Debian package, plus wheel/sdist) from the
-      portal's Downloads page.</li>
-    <li><strong>Verify</strong> the release: check the detached signature over the manifest with the
-      published verification key, then verify each artifact checksum.</li>
-    <li><strong>Install</strong> the package and run setup.</li>
-  </ol>
-  <div class="note">This page is a high-level summary. After you sign in and your release is
-    authorized, the portal's <strong>Getting started</strong> page holds the complete, copyable
-    post-login journey — verify &amp; install, standalone software-only setup, Gemini API / Codex
-    provider configuration, the workstation service, node verification and running a software-only
-    mission. <code>sudo</code> is for APT only; never use <code>pip</code> for GNU Radio, SoapySDR,
-    UHD, libiio or <code>python3-venv</code>.</div>
+  <section class="section" style="padding-top:24px"><div class="wrap">
+    <div class="prose" style="max-width:740px">
+      <h2>Requirements</h2>
+      <ul>
+        <li>Ubuntu 24.04 LTS (amd64)</li>
+        <li>An approved early-access account</li>
+        <li>For radio work, a supported software-defined radio (optional to start)</li>
+      </ul>
 
-  <div class="note">The current beta is a <strong>one-command experience</strong>: after
-    <code>aithernet setup</code>, run your work with a single command —
-    <code>aithernet run "&lt;what you want done&gt;"</code> — which creates, starts, monitors and
-    returns the result. No separate submit/start/watch, no editing systemd units, PATH or YAML, and
-    no knowing provider internals. If anything drifts, <code>aithernet doctor --repair</code> fixes
-    the common cases. Physical SDR transmission is available when you enable and configure it
-    locally on TX-capable hardware (you select the parameters and operate within your local rules).</div>
+      <div class="steps" style="margin-top:36px">
+        <div class="step">
+          <div><h3>Download from the portal</h3>
+            <p>Sign in to the authenticated portal and download your signed package, checksums, and
+              verification key from the Downloads page.</p>
+            <p><a class="btn ghost sm" href="https://app.aithernet.online/#/signin">Open the portal</a></p></div>
+        </div>
+        <div class="step">
+          <div><h3>Verify the package</h3>
+            <p>Verify the signature and checksums with the published key before installing. The portal
+              shows the exact commands for your release.</p></div>
+        </div>
+        <div class="step">
+          <div><h3>Install</h3>
+            <pre><code>sudo apt update
+sudo apt install ./aithernet_1.0.0~beta.3_amd64.deb</code></pre></div>
+        </div>
+        <div class="step">
+          <div><h3>Run setup</h3>
+            <p>Guided setup configures the node and, in hosted mode, enrolls it to your account.</p>
+            <pre><code>aithernet setup</code></pre></div>
+        </div>
+        <div class="step">
+          <div><h3>Start using Aithernet</h3>
+            <p>Run your first mission in plain language.</p>
+            <pre><code>aithernet run "&lt;what you want done&gt;"</code></pre></div>
+        </div>
+      </div>
 
-  <h2>Verify &amp; install (Ubuntu 24.04 amd64)</h2>
-  <p>From the portal Downloads page, download (into one directory) the package plus the
-    verification files served alongside it: <code>manifest.json</code>, <code>manifest.sig</code>,
-    the production public key <code>aithernet-release.pub</code> (PEM), and <code>SHA256SUMS</code>.
-    Verify <strong>before</strong> installing, using only standard tools:</p>
-  <pre><code># 1) BEFORE installing — verify checksums, then the detached Ed25519 signature
-#    over the manifest with the production public key (standard OpenSSL, no Aithernet tools yet)
-sha256sum -c SHA256SUMS
-openssl pkeyutl -verify -pubin -inkey aithernet-release.pub \
-  -rawin -in manifest.json -sigfile manifest.sig
+      <div class="callout" style="margin-top:36px">Need help? See the
+        <a href="/docs.html">documentation</a> for setup options, provider configuration, enrollment,
+        and troubleshooting.</div>
 
-# 2) refresh APT package indexes FIRST, then install the node package.
-#    `apt update` is required on a fresh Ubuntu image — without it APT has no candidate for
-#    python3-venv (and the recommended gnuradio / uhd-host / soapysdr-tools), and the install
-#    fails with "python3-venv but it is not installable".
-sudo apt update
-sudo apt install ./aithernet_1.0.0~beta.3_amd64.deb
-
-# 3) the documented CLI is now on PATH
-aithernet --help
-
-# 4) AFTER installing — an optional all-in-one re-check of the same downloaded directory
-#    (this command ships in the .deb, so it is only available once installed)
-aithernet release verify ./</code></pre>
-
-  <div class="note">APT resolves the package's dependencies (<code>python3-venv</code>) and the
-    recommended SDR packages (<code>gnuradio</code>, <code>uhd-host</code>,
-    <code>soapysdr-tools</code>) from Ubuntu's signed <code>main</code>/<code>universe</code>
-    repositories. If <code>apt install</code> reports a package "is not installable" on a fresh
-    machine, run <code>sudo apt update</code> and retry. <strong>Do not</strong> use <code>pip</code>
-    for GNU Radio, SoapySDR, UHD or <code>python3-venv</code> — they are system packages. The
-    bundled installer can do this for you: <code>./aithernet-install.sh --deb
-    ./aithernet_1.0.0~beta.3_amd64.deb</code> (validates the platform, refreshes stale indexes,
-    retries, never uses pip).</div>
-
-  <h2>Set up and run (1.0.0-beta.3)</h2>
-  <pre><code># one guided setup, then run your work with one command
-aithernet setup
-aithernet run "&lt;what you want Aithernet to do&gt;"</code></pre>
-
-  <ul class="tight">
-    <li><code>aithernet setup</code> detects and configures your local workstation: it initializes the
-      canonical node identity and state, guides you through connecting a <strong>coordinator</strong>
-      (planner) and a <strong>coding agent</strong> in plain language, configures and verifies the
-      managed user service, resolves supported CLI runtimes automatically, verifies GNU Radio and the
-      managed signed RF-MCP component, and runs a software-only readiness check.</li>
-    <li><code>aithernet run "&lt;prompt&gt;"</code> creates the mission, starts it, shows progress,
-      returns the result, and prints the mission, run and artifact IDs — one command, no separate
-      submit/start/watch.</li>
-    <li><code>aithernet doctor --repair</code> safely repairs common local configuration drift.</li>
-    <li>No manual systemd units, YAML, <code>PATH</code>/NVM, environment files, or provider-adapter
-      knowledge is expected. upgrading from an earlier beta? Just install the new package and run
-      <code>aithernet setup</code> — it detects and migrates the existing install (preserving your
-      node ID, name, missions, events, artifacts and provider configuration).</li>
-  </ul>
-
-  <p>Signed-in customers get the exact versioned commands, the authorized filenames, and the
-    verification key on the portal <a href="https://app.aithernet.online/#/portal/getting-started">Getting
-    started</a> and Downloads pages.</p>
-
-  <details>
-    <summary>Advanced / operator workflows (not needed for the standard journey)</summary>
-    <p>These remain available for operators and automation, but are <strong>not</strong> part of normal
-      onboarding. The standard journey above is <code>setup</code> → <code>run</code>.</p>
-    <ul class="tight">
-      <li>Connect providers explicitly: <code>aithernet agents connect coordinator</code> /
-        <code>aithernet agents connect coding</code>.</li>
-      <li>Lower-level mission lifecycle: <code>aithernet mission submit "&lt;prompt&gt;"</code> (create
-        only), <code>aithernet mission start</code>, <code>aithernet mission watch</code> (read-only),
-        <code>aithernet mission retry</code>.</li>
-      <li>Run in the foreground for a quick interactive session: <code>aithernet start</code>
-        (Ctrl-C stops it). The managed service started by <code>setup</code> is the supported way to
-        keep a node up across logout/reboot.</li>
-      <li>Hosted/fleet enrollment and hardware-profile installation apply to hosted or
-        physical-SDR deployments, not the standalone software-only workstation journey.</li>
-    </ul>
-  </details>
-
-  <div class="note">The RF backend is a pinned, signed GNU Radio MCP component installed and verified
-    by <code>aithernet setup</code> into a managed location — never a developer checkout or a manual
-    <code>git clone</code>. See <a href="/rf-notices.html">RF component &amp; source notices</a>.</div>
-
-  <h2>SDR peer transport (1.0.0-beta.3)</h2>
-  <ul class="tight">
-    <li><strong>Simulated + physical SDR peer transport.</strong> Canonical peer messages travel
-      through authenticated encryption, fragmentation, CRC, FEC, BPSK/QPSK modulation, a channel,
-      demodulation and reassembly to the receiving node's canonical ingress — over
-      <code>simulated_rf</code> (software) or <code>rf_ota</code> (real SDR). The receiving node's
-      MissionEngine policy stays authoritative; RF is never silently downgraded to IP.</li>
-    <li><strong>Physical SDR transmission is available when the LOCAL operator enables and configures
-      it</strong> on supported TX-capable hardware. The operator selects the physical parameters and
-      is responsible for operating the radio in accordance with the rules applicable at the operating
-      location. <strong>No vendor approval, cloud authorization, subscription, or external service is
-      required</strong> — enable it locally with <code>aithernet rf tx enable</code>.</li>
-    <li>Aithernet validates device capabilities, enforces device + operator ranges, authenticates
-      peers, bounds execution, and records the exact transmission plan. It <strong>never
-      automatically chooses an operating frequency</strong>.</li>
-    <li>Qualification states are descriptive: <em>software-qualified</em> (passed in simulation/
-      loopback), <em>operator-custom</em>, and <em>hardware-tested</em> (confirmed by the operator on
-      their hardware). Untested-on-your-hardware is not "certified," but the feature is never hidden.
-      The optional live coordinator→coding-agent modem-generation test uses your own coordinator
-      credential.</li>
-  </ul>
-
-  <h2>Account-bound fleet, tenant-isolated meshes &amp; the OTA link protocol (1.0.0-beta.3)</h2>
-  <ul class="tight">
-    <li><strong>Account vs node identity.</strong> Your account (email + immutable account ID) is
-      separate from each node's Ed25519 identity. The email is never a node key and is never sent
-      over the RF peer protocol. Packages are generic and byte-identical for every customer; the
-      one-time enrollment code binds a node to your tenant at install time.</li>
-    <li><strong>Tenant-isolated meshes.</strong> A <em>mesh</em> is the explicit trust group that
-      authorizes peer communication. Two nodes that can merely reach each other — even mutually
-      key-trusted — cannot exchange messages until they share a mesh. Cross-tenant communication
-      requires an explicit shared mesh; it never happens just because two nodes can hear each other
-      over RF. Meshes work fully offline in standalone mode and synchronize through the control
-      plane when hosted.</li>
-    <li><strong>Complete OTA link protocol.</strong> RTS/CTS reservation, carrier sense, randomized
-      backoff and hidden-node mitigation on a shared channel, or a reserved TDD slot point-to-point;
-      selective retransmission via a BLOCK_ACK bitmap; the frame set BEACON/RTS/CTS/DATA/BLOCK_ACK/
-      NACK/CANCEL/FIN/DELIVERY_RECEIPT. The four acknowledgement layers — link ACK, delivery receipt,
-      mission acknowledgement and mission result — stay distinct; a radio frame ACK is never reported
-      as mission success.</li>
-    <li><strong>Fleet visibility.</strong> Signed heartbeats drive explicit
-      online/stale/offline/degraded/never_seen/revoked states in the portal; node rename, enrollment
-      code revocation and mesh management are in the authenticated portal.</li>
-  </ul>
-
-  <h2>Receive-first &amp; permissions</h2>
-  <ul class="tight">
-    <li>The node is <strong>receive-first</strong>; transmission is disabled by default.</li>
-    <li>Non-root SDR access uses udev + the <code>plugdev</code>/<code>dialout</code> groups; the
-      installer configures these.</li>
-    <li>The node makes only <strong>outbound</strong> connections to the control plane. It opens no
-      inbound ports and never exposes its local API to the Internet.</li>
-  </ul>
-
-  <p class="muted">This page shows the current beta release
-    (<code>aithernet_1.0.0~beta.3_amd64.deb</code>). The authenticated portal always supplies the
-    exact authorized filenames, the per-release verification key, and the complete copyable
-    Getting started journey for your release.</p>
+      <p class="muted">The current early-access release is <strong>1.0.0-beta.3</strong>. The portal
+        always provides the exact authorized filenames and verification key for your release.</p>
+    </div>
+  </div></section>
 </main>
 
-<footer class="site"><div class="bar">
-  <p>© Aithernet · <a href="/privacy.html">Privacy &amp; legal</a> ·
-    <a href="/request-access.html">Request access</a> ·
-    <a href="https://app.aithernet.online/#/status">Service status</a></p>
+<footer class="site"><div class="wrap">
+  <div class="foot-top">
+    <div class="foot-brand">
+      <a class="brand" href="/">Aithernet<span class="dot">.</span></a>
+      <p>Agentic infrastructure for distributed software-defined radio.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col"><h4>Product</h4>
+        <a href="/product.html">Product</a><a href="/platform.html">Platform</a>
+        <a href="/use-cases.html">Use cases</a><a href="/security.html">Security</a></div>
+      <div class="foot-col"><h4>Documentation</h4>
+        <a href="/docs.html">Documentation</a><a href="/install.html">Installation</a>
+        <a href="/release-notes.html">Release notes</a><a href="/api.html">API</a></div>
+      <div class="foot-col"><h4>Company</h4>
+        <a href="/company.html">Company</a><a href="/request-access.html">Request access</a>
+        <a href="https://app.aithernet.online/#/status">Status</a><a href="/privacy.html">Privacy</a></div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 Aithernet</span><span>&middot;</span>
+    <a href="/privacy.html">Privacy &amp; legal</a><span>&middot;</span>
+    <a href="mailto:adityapawar@aithernet.online">adityapawar@aithernet.online</a><span>&middot;</span>
+    <span>Early access &middot; invitation-only</span>
+  </div>
 </div></footer>
 </body>
 </html>
